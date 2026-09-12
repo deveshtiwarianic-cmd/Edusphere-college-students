@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+  <title>Explore | EduSphere 3D</title>
+  <meta name="description" content="IIT & NIT mentorship platform with Problem-Solving AI for JEE questions. Premium development by Tech Spark Pvt. Ltd." />
+  <meta name="author" content="Tech Spark Pvt. Ltd." />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--primary:#00e5ff;--secondary:#7c4dff;--accent:#ff2e97;--dark:#050510;--card:rgba(10,10,24,0.85);--text:#eef4ff;--muted:#9bb0d0;--success:#00e676}
+    html{scroll-behavior:smooth}
+    body{font-family:'Outfit','Space Grotesk',system-ui,sans-serif;background:var(--dark);color:var(--text);overflow-x:hidden;line-height:1.65;min-height:100vh}
+    #canvas-container{position:fixed;inset:0;z-index:0;pointer-events:none}
+    #loader{position:fixed;inset:0;background:var(--dark);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s,visibility .6s}
+    #loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+    .loader-spinner{width:52px;height:52px;border:3px solid rgba(0,229,255,.15);border-top-color:var(--primary);border-radius:50%;animation:spin .75s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .loader-text{margin-top:1.1rem;color:var(--muted);font-size:.9rem}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 1.6rem;display:flex;justify-content:space-between;align-items:center;background:rgba(5,5,16,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,229,255,.1);transition:padding .3s}
+    nav.scrolled{padding:.65rem 1.6rem;background:rgba(5,5,16,.95)}
+    .logo-wrap{display:flex;flex-direction:column}
+    .logo{font-weight:800;font-size:1.32rem;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .logo-sub{font-size:.62rem;color:var(--muted);font-weight:500}
+    .nav-links{display:flex;gap:.15rem;list-style:none;align-items:center}
+    .nav-links a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.86rem;padding:.42rem .8rem;border-radius:8px;transition:all .2s}
+    .nav-links a:hover{color:var(--primary);background:rgba(0,229,255,.08)}
+    .nav-links a.active{color:#000;background:linear-gradient(135deg,var(--primary),var(--secondary));font-weight:700}
+    .mobile-menu .mobile-link.active{color:var(--primary);background:rgba(0,229,255,.09)}
+    .mobile-home{margin-bottom:.3rem}
+    .toast{position:fixed;left:50%;bottom:1.3rem;transform:translate(-50%,20px);z-index:500;background:rgba(10,10,24,.96);border:1px solid rgba(0,229,255,.25);color:var(--text);padding:.75rem 1rem;border-radius:12px;box-shadow:0 12px 35px rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:.3s;max-width:90%;text-align:center;font-size:.86rem}
+    .toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+    .back-top{position:fixed;right:1.1rem;bottom:5.1rem;z-index:140;width:42px;height:42px;border-radius:50%;border:1px solid rgba(0,229,255,.25);background:rgba(8,8,20,.9);color:var(--primary);cursor:pointer;opacity:0;visibility:hidden;transition:.25s;font-size:1.05rem}
+    .back-top.show{opacity:1;visibility:visible}
+    .form-status{font-size:.78rem;color:var(--muted);margin-top:.65rem;text-align:center;min-height:1.1em}
+    .cta-btn{background:linear-gradient(135deg,var(--primary),var(--secondary));color:#000;border:none;padding:.55rem 1.2rem;border-radius:50px;font-weight:700;font-size:.85rem;cursor:pointer;transition:transform .2s,box-shadow .2s;font-family:inherit}
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,229,255,.35)}
+    .btn-secondary{background:transparent;color:var(--primary);border:1.5px solid var(--primary);padding:.5rem 1.15rem;border-radius:50px;font-weight:600;font-size:.85rem;cursor:pointer;transition:all .2s;font-family:inherit}
+    .btn-secondary:hover{background:rgba(0,229,255,.1);transform:translateY(-2px)}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;z-index:110}
+    .hamburger span{width:23px;height:2.5px;background:var(--primary);border-radius:2px;transition:all .3s}
+    .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+    .hamburger.active span:nth-child(2){opacity:0}
+    .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+    .mobile-menu{position:fixed;top:0;right:-100%;width:min(300px,85vw);height:100vh;background:rgba(6,6,18,.98);backdrop-filter:blur(24px);z-index:105;padding:5rem 1.4rem 2rem;transition:right .35s;border-left:1px solid rgba(0,229,255,.12);display:flex;flex-direction:column;gap:.25rem}
+    .mobile-menu.open{right:0}
+    .mobile-menu a{color:var(--text);text-decoration:none;font-size:1.05rem;font-weight:500;padding:.65rem .5rem;border-radius:10px}
+    .mobile-menu a:hover{background:rgba(0,229,255,.08);color:var(--primary)}
+    .mobile-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:104;opacity:0;visibility:hidden;transition:all .3s}
+    .mobile-overlay.show{opacity:1;visibility:visible}
+    .hero{position:relative;z-index:10;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:7rem 1.4rem 4rem}
+    .badge{display:inline-flex;align-items:center;gap:.4rem;padding:.38rem 1.1rem;background:rgba(0,229,255,.09);border:1px solid rgba(0,229,255,.28);border-radius:50px;font-size:.8rem;color:var(--primary);margin-bottom:1.3rem}
+    .hero h1{font-size:clamp(2.05rem,5.2vw,3.7rem);font-weight:800;line-height:1.18;max-width:860px;margin-bottom:1rem;background:linear-gradient(135deg,#fff 20%,var(--primary) 60%,var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero p{font-size:1.08rem;color:var(--muted);max-width:560px;margin-bottom:2rem}
+    .hero-buttons{display:flex;gap:.85rem;flex-wrap:wrap;justify-content:center}
+    section{position:relative;z-index:10;padding:4.2rem 1.4rem;max-width:1120px;margin:0 auto}
+    .section-title{font-size:clamp(1.65rem,3.6vw,2.3rem);font-weight:700;text-align:center;margin-bottom:.6rem}
+    .section-sub{text-align:center;color:var(--muted);max-width:540px;margin:0 auto 2.4rem;font-size:.98rem}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem}
+    .card{background:var(--card);border:1px solid rgba(0,229,255,.09);border-radius:18px;padding:1.5rem;backdrop-filter:blur(16px);transition:transform .28s,border-color .28s,box-shadow .28s}
+    .card:hover{transform:translateY(-6px);border-color:rgba(0,229,255,.32);box-shadow:0 16px 40px rgba(0,0,0,.4)}
+    .card-icon{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,rgba(0,229,255,.16),rgba(124,77,255,.16));display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:.9rem}
+    .card h3{font-size:1.12rem;margin-bottom:.45rem;color:#fff}
+    .card p{color:var(--muted);font-size:.9rem}
+    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.4rem}
+    .step{text-align:center}
+    .step-num{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#000;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto .8rem;font-size:1.1rem}
+    .step h4{margin-bottom:.35rem;font-size:1.02rem}
+    .step p{color:var(--muted);font-size:.86rem}
+    .profit-box{background:linear-gradient(135deg,rgba(0,229,255,.06),rgba(124,77,255,.06));border:1px solid rgba(0,229,255,.2);border-radius:20px;padding:2rem 1.5rem;text-align:center}
+    .profit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.1rem;margin-top:1.6rem}
+    .profit-item{background:rgba(0,0,0,.3);border-radius:14px;padding:1.2rem .9rem}
+    .profit-item strong{display:block;font-size:1.55rem;color:var(--primary);margin-bottom:.2rem}
+    .profit-item span{font-size:.82rem;color:var(--muted)}
+    .cta-section{text-align:center;padding:4.2rem 1.4rem}
+    .cta-section h2{font-size:clamp(1.65rem,3.6vw,2.4rem);margin-bottom:.7rem}
+    .cta-section>p{color:var(--muted);margin-bottom:1.6rem;max-width:460px;margin-left:auto;margin-right:auto}
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);z-index:200;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;visibility:hidden;transition:all .3s}
+    .modal-overlay.show{opacity:1;visibility:visible}
+    .modal{background:#0c0c1c;border:1px solid rgba(0,229,255,.22);border-radius:20px;padding:1.9rem 1.5rem;width:100%;max-width:420px;max-height:90vh;overflow-y:auto;transform:translateY(18px);transition:transform .3s;position:relative}
+    .modal-overlay.show .modal{transform:translateY(0)}
+    .modal h3{font-size:1.3rem;margin-bottom:.35rem;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .modal-desc{color:var(--muted);font-size:.88rem;margin-bottom:1.3rem}
+    .form-group{margin-bottom:.95rem}
+    .form-group label{display:block;font-size:.82rem;color:var(--muted);margin-bottom:.3rem;font-weight:500}
+    .form-group input,.form-group select,.form-group textarea{width:100%;padding:.68rem .9rem;background:rgba(255,255,255,.04);border:1px solid rgba(0,229,255,.18);border-radius:10px;color:var(--text);font-size:.92rem;font-family:inherit;outline:none}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary)}
+    .form-group textarea{resize:vertical;min-height:75px}
+    .modal-actions{display:flex;gap:.65rem;margin-top:1.3rem}
+    .modal-actions button{flex:1}
+    .close-modal{position:absolute;top:.9rem;right:.9rem;background:none;border:none;color:var(--muted);font-size:1.35rem;cursor:pointer}
+    .success-msg{text-align:center;padding:1.4rem 0;display:none}
+    .success-msg.show{display:block}
+    .success-msg .icon{font-size:2.4rem;margin-bottom:.7rem}
+    .success-msg h4{color:var(--success);margin-bottom:.35rem}
+    footer{position:relative;z-index:10;text-align:center;padding:2rem 1.4rem 2.6rem;border-top:1px solid rgba(0,229,255,.08);color:var(--muted);font-size:.86rem}
+    .brand-line{margin-top:.6rem;font-size:.8rem;color:#7a8ba8}
+    .brand-line strong{color:var(--primary);font-weight:600}
+    #webgl-fallback{display:none;position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);background:rgba(20,20,40,.92);border:1px solid rgba(255,46,151,.35);color:#ffb0d0;padding:.55rem 1.1rem;border-radius:10px;font-size:.78rem;z-index:50;max-width:90%;text-align:center}
+    .chat-toggle{position:fixed;bottom:1.4rem;right:1.4rem;z-index:150;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));border:none;cursor:pointer;box-shadow:0 6px 24px rgba(0,229,255,.4);display:flex;align-items:center;justify-content:center;font-size:1.6rem;transition:transform .25s,box-shadow .25s}
+    .chat-toggle:hover{transform:scale(1.08);box-shadow:0 8px 30px rgba(0,229,255,.5)}
+    .chat-toggle .badge-dot{position:absolute;top:3px;right:3px;width:11px;height:11px;background:var(--accent);border-radius:50%;border:2px solid var(--dark);animation:pulse 1.5s infinite}
+    @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.2);opacity:.7}}
+    .chat-window{position:fixed;bottom:5.3rem;right:1.4rem;width:min(400px,calc(100vw - 1.8rem));height:520px;max-height:calc(100vh - 7.5rem);background:#0a0a18;border:1px solid rgba(0,229,255,.22);border-radius:20px;z-index:149;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 22px 55px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(18px) scale(.96);transition:all .3s ease}
+    .chat-window.open{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+    .chat-header{background:linear-gradient(135deg,rgba(0,229,255,.12),rgba(124,77,255,.12));padding:.95rem 1rem;display:flex;align-items:center;gap:.75rem;border-bottom:1px solid rgba(0,229,255,.12)}
+    .chat-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .chat-header-info h4{font-size:.92rem;font-weight:600}
+    .chat-header-info p{font-size:.7rem;color:var(--muted)}
+    .chat-close{margin-left:auto;background:none;border:none;color:var(--muted);font-size:1.25rem;cursor:pointer;padding:4px}
+    .chat-messages{flex:1;overflow-y:auto;padding:.95rem;display:flex;flex-direction:column;gap:.75rem}
+    .chat-messages::-webkit-scrollbar{width:4px}
+    .chat-messages::-webkit-scrollbar-thumb{background:rgba(0,229,255,.25);border-radius:4px}
+    .msg{max-width:88%;padding:.65rem .95rem;border-radius:14px;font-size:.88rem;line-height:1.55;animation:msgIn .25s ease}
+    @keyframes msgIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+    .msg.bot{background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.12);align-self:flex-start;border-bottom-left-radius:4px}
+    .msg.user{background:linear-gradient(135deg,rgba(0,229,255,.22),rgba(124,77,255,.22));align-self:flex-end;border-bottom-right-radius:4px}
+    .msg.typing{display:flex;gap:5px;padding:.85rem 1.15rem}
+    .msg.typing span{width:6px;height:6px;background:var(--primary);border-radius:50%;animation:bounce 1.2s infinite}
+    .msg.typing span:nth-child(2){animation-delay:.15s}
+    .msg.typing span:nth-child(3){animation-delay:.3s}
+    @keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+    .chat-input-area{padding:.75rem;border-top:1px solid rgba(0,229,255,.1);display:flex;gap:.45rem;align-items:center}
+    .chat-input-area input{flex:1;padding:.65rem .95rem;background:rgba(255,255,255,.04);border:1px solid rgba(0,229,255,.18);border-radius:25px;color:var(--text);font-size:.88rem;font-family:inherit;outline:none}
+    .chat-input-area input:focus{border-color:var(--primary)}
+    .chat-send{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0;transition:transform .2s}
+    .chat-send:hover{transform:scale(1.08)}
+    .quick-replies{display:flex;flex-wrap:wrap;gap:.35rem;padding:0 .9rem .55rem}
+    .quick-reply{background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.22);color:var(--primary);padding:.32rem .7rem;border-radius:18px;font-size:.75rem;cursor:pointer;transition:all .2s;font-family:inherit}
+    .quick-reply:hover{background:rgba(0,229,255,.16)}
+    .msg.bot .sol-title{color:var(--primary);font-weight:600;margin-bottom:.3rem;display:block}
+    .msg.bot .step-s{margin:.25rem 0;padding-left:.3rem}
+    .msg.bot .answer{color:var(--success);font-weight:600;margin-top:.4rem;display:block}
+    @media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.hero h1{font-size:1.95rem}.hero p{font-size:.98rem}nav{padding:.75rem 1.1rem}.chat-window{right:.7rem;bottom:4.8rem;width:calc(100vw - 1.4rem);height:68vh}.chat-toggle{bottom:1.1rem;right:1.1rem;width:52px;height:52px}}
+    .glow{text-shadow:0 0 40px rgba(0,229,255,.22)}
+    .bottom-nav{display:none}
+    .mobile-nav-label{display:none}
+    @media(max-width:768px){
+      .mobile-nav-label{display:block;position:fixed;bottom:78px;left:50%;transform:translateX(-50%);z-index:146;font-size:.55rem;letter-spacing:1.4px;font-weight:800;color:rgba(255,255,255,.45);pointer-events:none}
+      .bottom-nav{position:fixed;left:10px;right:10px;bottom:10px;height:64px;z-index:145;display:flex;align-items:center;justify-content:space-around;background:rgba(7,7,19,.94);backdrop-filter:blur(20px);border:1px solid rgba(0,229,255,.18);border-radius:18px;box-shadow:0 12px 35px rgba(0,0,0,.5);padding:5px}
+      .bottom-item{flex:1;height:54px;border:0;background:transparent;color:#9bb0d0;display:flex; text-decoration:none;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:13px;font-family:inherit;cursor:pointer}
+      .bottom-item span{font-size:1.20rem;line-height:1}
+      .bottom-item small{font-size:.56rem;font-weight:700;letter-spacing:.1px}
+      .bottom-item:active{transform:scale(.94)}
+      .bottom-item span{font-weight:700}
+      .bottom-ai small{font-weight:800}
+      .bottom-item.active{color:var(--primary);background:rgba(0,229,255,.08)}
+      .bottom-item.bottom-ai{width:58px;max-width:58px;margin:-18px 3px 0;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#000;border:4px solid #080817;border-radius:50%;height:58px;box-shadow:0 6px 22px rgba(0,229,255,.35)}
+      .bottom-item.bottom-ai span{font-size:1.35rem}
+      .bottom-item.bottom-ai small{font-size:.58rem}
+      .chat-toggle{bottom:88px;right:12px;width:45px;height:45px;font-size:1.2rem}
+      footer{padding-bottom:6.5rem}
+    }
+
+  
+/* FINAL MOBILE BOTTOM NAV FIX */
+@media(max-width:768px){
+  nav.bottom-nav{
+    top:auto !important;
+    bottom:10px !important;
+    left:10px !important;
+    right:10px !important;
+    position:fixed !important;
+    z-index:145 !important;
+  }
+  #mainNav{display:none !important;}
+  .mobile-menu,.mobile-overlay{display:none !important;}
+  body{padding-bottom:92px;}
+}
+@media(min-width:769px){
+  nav.bottom-nav{display:none !important;}
+}
+
+</style>
+
+<style>
+body.page-explore section{display:none}
+body.page-explore #how,#colleges{display:block}
+body.page-explore footer{display:block}
+body.page-explore .chat-toggle{display:none !important}
+body.page-explore .chat-window{display:none !important}
+@media(max-width:768px){body.page-explore .mobile-nav-label{display:block}}
+</style>
+</head>
+<body class="page-explore">
+  <div id="loader"><div class="loader-spinner"></div><div class="loader-text">Loading EduSphere 3D + AI...</div></div>
+  <div id="canvas-container"></div>
+  <div id="webgl-fallback">3D background unavailable. Content still works.</div>
+
+  <nav id="mainNav">
+    <div class="logo-wrap">
+      <div class="logo">EduSphere 3D</div>
+      <div class="logo-sub">by Tech Spark Pvt. Ltd.</div>
+    </div>
+    <ul class="nav-links" id="desktopNavLinks">
+      <li><a href="#home" data-nav="home">Home</a></li>
+      <li><a href="#about" data-nav="about">About</a></li>
+      <li><a href="#how" data-nav="how">How It Works</a></li>
+      <li><a href="#mentors" data-nav="mentors">Mentors</a></li>
+      <li><a href="#colleges" data-nav="colleges">Colleges</a></li>
+      <li><a href="#ai-help" data-nav="ai-help">AI Solver</a></li>
+      <li><a href="#contact" data-nav="contact">Join</a></li>
+    </ul>
+    <button class="cta-btn desktop-cta" onclick="openModal('mentor')">Get Started</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" class="mobile-link mobile-home" data-nav="home">🏠 Home</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#how" class="mobile-link">How it Works</a>
+    <a href="#mentors" class="mobile-link">For Mentors</a>
+    <a href="#colleges" class="mobile-link">Colleges</a>
+    <a href="#ai-help" class="mobile-link">AI Problem Solver</a>
+    <a href="#contact" class="mobile-link">Join</a>
+    <button class="cta-btn" style="margin-top:1rem;width:100%" onclick="closeMobile();openModal('mentor')">Get Started</button>
+  </div>
+
+  <section class="hero" id="home">
+    <div class="badge">🚀 Engineer's Day 2026 • AI + Mentorship • Tech Spark Pvt. Ltd.</div>
+    <h1 class="glow">IIT & NIT Mentors +<br>Problem-Solving AI</h1>
+    <p>Private school के बच्चों को top mentors से जोड़ो। AI से JEE Questions solve करो। Colleges को revenue मिलता है।</p>
+    <div class="hero-buttons">
+      <button class="cta-btn" onclick="scrollToSection('how')">Explore Platform</button>
+      <button class="btn-secondary" onclick="openChat()">Ask AI a Question</button>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">Why EduSphere?</h2>
+    <p class="section-sub">Mentorship + AI Problem Solver — complete package for JEE aspirants.</p>
+    <div class="grid">
+      <div class="card"><div class="card-icon">🎓</div><h3>IIT / NIT Mentors</h3><p>Top college students real experience share करते हैं। Paid mentorship + certificates.</p></div>
+      <div class="card"><div class="card-icon">🤖</div><h3>Problem-Solving AI</h3><p>Maths, Physics, Chemistry questions step-by-step solve करता है। 24×7 available.</p></div>
+      <div class="card"><div class="card-icon">🏫</div><h3>Private School Students</h3><p>Affordable guidance for JEE Main/Advanced, Boards और Olympiads.</p></div>
+      <div class="card"><div class="card-icon">🏛️</div><h3>Colleges Profit</h3><p>Partner colleges को revenue share + branding + student pipeline मिलता है।</p></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-sub">Simple process for mentors, students and colleges.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><h4>Sign Up</h4><p>Mentor, Student या College के रूप में रजिस्टर करो।</p></div>
+      <div class="step"><div class="step-num">2</div><h4>Match / Ask AI</h4><p>Mentor मिलता है या AI से सीधा question पूछो।</p></div>
+      <div class="step"><div class="step-num">3</div><h4>Sessions + Solve</h4><p>1-on-1 sessions + AI से practice problems solve करो।</p></div>
+      <div class="step"><div class="step-num">4</div><h4>Grow & Earn</h4><p>Students improve. Mentors earn. Colleges get revenue.</p></div>
+    </div>
+  </section>
+
+  <section id="mentors">
+    <h2 class="section-title">For IIT & NIT Students</h2>
+    <p class="section-sub">Knowledge share करो, पैसे कमाओ, leadership develop करो।</p>
+    <div class="grid">
+      <div class="card"><div class="card-icon">💰</div><h3>Earn While You Learn</h3><p>₹500–2000 प्रति session. Flexible hours.</p></div>
+      <div class="card"><div class="card-icon">📜</div><h3>Certificates & LORs</h3><p>Official certificates + recommendation letters.</p></div>
+      <div class="card"><div class="card-icon">🚀</div><h3>Leadership Portfolio</h3><p>Real impact stories for resume & interviews.</p></div>
+    </div>
+  </section>
+
+  <section id="colleges">
+    <h2 class="section-title">Colleges Partner Program</h2>
+    <p class="section-sub">Revenue + Branding + Student pipeline.</p>
+    <div class="profit-box">
+      <h3 style="margin-bottom:.85rem;font-size:1.35rem">Win-Win Revenue Model</h3>
+      <p style="color:var(--muted);max-width:520px;margin:0 auto;font-size:.93rem">Partner colleges को platform fee का हिस्सा, exclusive branding और early access मिलता है।</p>
+      <div class="profit-grid">
+        <div class="profit-item"><strong>30%</strong><span>Revenue Share</span></div>
+        <div class="profit-item"><strong>500+</strong><span>Students Pipeline</span></div>
+        <div class="profit-item"><strong>Brand</strong><span>National Visibility</span></div>
+        <div class="profit-item"><strong>CSR</strong><span>Impact Reporting</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ai-help">
+    <h2 class="section-title">AI Problem Solver</h2>
+    <p class="section-sub">JEE / Boards level questions पूछो — Maths, Physics, Chemistry। AI step-by-step solve करेगा।</p>
+    <div class="grid">
+      <div class="card" style="cursor:pointer" onclick="openChat();setTimeout(()=>sendMessage('solve quadratic equation'),400)">
+        <div class="card-icon">📐</div><h3>Maths Problems</h3><p>Quadratic, Integration, Probability, Vectors — step-by-step solutions.</p>
+      </div>
+      <div class="card" style="cursor:pointer" onclick="openChat();setTimeout(()=>sendMessage('physics kinematics'),400)">
+        <div class="card-icon">⚛️</div><h3>Physics Concepts</h3><p>Kinematics, Laws of Motion, Electrostatics, Modern Physics.</p>
+      </div>
+      <div class="card" style="cursor:pointer" onclick="openChat();setTimeout(()=>sendMessage('chemistry mole concept'),400)">
+        <div class="card-icon">🧪</div><h3>Chemistry</h3><p>Mole concept, Organic reactions, Equilibrium, Periodic table.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:1.8rem">
+      <button class="cta-btn" onclick="openChat()">Open AI Solver Now →</button>
+    </div>
+  </section>
+
+  <section id="contact" class="cta-section">
+    <h2>Ready to Build the Future?</h2>
+    <p>Engineer's Day 2026 के लिए बनाया गया। Mentor, Student या College Partner बनो।</p>
+    <div style="display:flex;gap:.85rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem">
+      <button class="cta-btn" onclick="openModal('mentor')">Join as Mentor</button>
+      <button class="btn-secondary" onclick="openModal('student')">Join as Student</button>
+      <button class="btn-secondary" onclick="openModal('college')">Partner as College</button>
+    </div>
+    <div class="card" style="max-width:460px;margin:0 auto;text-align:left">
+      <h3 style="margin-bottom:.85rem">📩 Contact</h3>
+      <p style="color:var(--muted);margin-bottom:.35rem"><strong>Email:</strong> hello@techspark.in</p>
+      <p style="color:var(--muted);margin-bottom:.35rem"><strong>Demo:</strong> demo@techspark.in</p>
+      <p style="color:var(--muted)"><strong>Developed by:</strong> Tech Spark Pvt. Ltd.</p>
+    </div>
+  </section>
+
+  
+<section class="section" style="display:block"><div class="container"><div class="card" style="text-align:center"><div style="font-size:2.5rem">🧮</div><h2>Engineering Calculator</h2><p>Quick maths for assignments, labs and daily college calculations.</p><a class="btn" href="calculator.html">Open Calculator →</a></div></div></section>
+<footer>
+    <p>© 2026 EduSphere 3D • Made for Engineer's Day</p>
+    <p class="brand-line">Premium Development by <strong>Tech Spark Pvt. Ltd.</strong></p>
+    <p style="margin-top:.55rem;font-size:.76rem">IIT • NIT • Private Schools • Partner Colleges • AI Solver</p>
+  </footer>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="close-modal" onclick="closeModal()">×</button>
+      <div id="formView">
+        <h3 id="modalTitle">Join EduSphere</h3>
+        <p class="modal-desc" id="modalDesc">Fill the form — team will contact you.</p>
+        <form id="joinForm" onsubmit="return handleSubmit(event)">
+          <div class="form-group"><label>Full Name *</label><input type="text" id="name" required placeholder="Your name"></div>
+          <div class="form-group"><label>Email *</label><input type="email" id="email" required placeholder="you@example.com"></div>
+          <div class="form-group"><label>Phone</label><input type="tel" id="phone" placeholder="+91 XXXXXXXXXX"></div>
+          <div class="form-group"><label>Role *</label><select id="role" required><option value="mentor">IIT / NIT Mentor</option><option value="student">School Student</option><option value="college">College Partner</option></select></div>
+          <div class="form-group"><label>Message</label><textarea id="message" placeholder="Optional..."></textarea></div>
+          <div class="modal-actions">
+            <button type="button" class="btn-secondary" onclick="closeModal()">Cancel</button>
+            <button type="submit" class="cta-btn">Submit</button>
+          </div>
+          <div class="form-status" id="formStatus" aria-live="polite"></div>
+        </form>
+      </div>
+      <div class="success-msg" id="successMsg">
+        <div class="icon">✅</div><h4>Thank You!</h4>
+        <p style="color:var(--muted);font-size:.93rem">Tech Spark team will contact you soon.</p>
+        <button class="cta-btn" style="margin-top:1.1rem" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <button class="back-top" id="backTop" aria-label="Back to top" title="Back to top">↑</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="mobile-nav-label">COLLEGE STUDENT HUB</div>
+  <nav class="bottom-nav" id="bottomNav" aria-label="College student navigation">
+    <a class="bottom-item" data-bottom-nav="home" href="index.html"><span>⌂</span><small>Home</small></a>
+    <a class="bottom-item" data-bottom-nav="explore" href="explore.html"><span>▣</span><small>Explore</small></a>
+    <a class="bottom-item" data-bottom-nav="calculator" href="calculator.html"><span>🧮</span><small>Calc</small></a>
+    <a class="bottom-item bottom-ai" data-bottom-nav="ai" href="ai.html"><span>🤖</span><small>AI Help</small></a>
+    <a class="bottom-item" data-bottom-nav="mentors" href="mentors.html"><span>♙</span><small>Mentors</small></a>
+    <a class="bottom-item" data-bottom-nav="join" href="join.html"><span>＋</span><small>Join</small></a>
+  </nav>
+
+  <button class="chat-toggle" id="chatToggle">🤖<span class="badge-dot"></span></button>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <div class="chat-avatar">🧠</div>
+      <div class="chat-header-info"><h4>EduSphere Problem AI</h4><p>Solves JEE Questions • Online</p></div>
+      <button class="chat-close" id="chatClose">×</button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="quick-replies" id="quickReplies">
+      <button class="quick-reply" data-q="solve quadratic equation x²-5x+6=0">Quadratic Eqn</button>
+      <button class="quick-reply" data-q="physics kinematics">Kinematics</button>
+      <button class="quick-reply" data-q="chemistry mole concept">Mole Concept</button>
+      <button class="quick-reply" data-q="mentor kaise banu">Mentor कैसे?</button>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" placeholder="Question पूछो... (Maths/Physics/Chem)" autocomplete="off">
+      <button class="chat-send" id="chatSend">➤</button>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hidden'),550));
+    window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>40));
+
+    const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobileMenu'),mobileOverlay=document.getElementById('mobileOverlay');
+    function openMobile(){hamburger.classList.add('active');mobileMenu.classList.add('open');mobileOverlay.classList.add('show');document.body.style.overflow='hidden'}
+    function closeMobile(){hamburger.classList.remove('active');mobileMenu.classList.remove('open');mobileOverlay.classList.remove('show');document.body.style.overflow=''}
+    hamburger.addEventListener('click',()=>mobileMenu.classList.contains('open')?closeMobile():openMobile());
+    mobileOverlay.addEventListener('click',closeMobile);
+
+    const toast=document.getElementById('toast');
+    let toastTimer;
+    function showToast(message){
+      toast.textContent=message;toast.classList.add('show');
+      clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2800);
+    }
+
+    function scrollToSection(id){
+      const target=document.getElementById(id);
+      if(!target)return;
+      closeMobile();
+      target.scrollIntoView({behavior:'smooth',block:'start'});
+      history.replaceState(null,'','#'+id);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){
+      e.preventDefault();
+      scrollToSection(this.getAttribute('href').slice(1));
+    }));
+
+    const navItems=document.querySelectorAll('[data-nav]');
+    const sections=['home','about','how','mentors','colleges','ai-help','contact'].map(id=>document.getElementById(id)).filter(Boolean);
+    function setActiveNav(id){
+      navItems.forEach(item=>item.classList.toggle('active',item.dataset.nav===id));
+      document.querySelectorAll('[data-bottom-nav]').forEach(item=>item.classList.toggle('active',item.dataset.bottomNav===id));
+    }
+    const navObserver=('IntersectionObserver' in window)?new IntersectionObserver(entries=>{
+      const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+      if(visible)setActiveNav(visible.target.id);
+    },{rootMargin:'-25% 0px -60% 0px',threshold:[0.05,0.25,0.6]}):null;
+    if(navObserver)sections.forEach(s=>navObserver.observe(s));
+    setActiveNav((location.hash||'#home').slice(1));
+
+    const modalOverlay=document.getElementById('modalOverlay'),formView=document.getElementById('formView'),successMsg=document.getElementById('successMsg');
+    const joinForm=document.getElementById('joinForm'),formStatus=document.getElementById('formStatus');
+
+    function openModal(role){
+      closeMobile();closeChat();
+      formView.style.display='block';successMsg.classList.remove('show');formStatus.textContent='';joinForm.reset();
+      const t={mentor:['Join as Mentor','IIT / NIT students — share knowledge & earn.'],student:['Join as Student','Get mentorship from top colleges.'],college:['Partner as College','Revenue share + branding + pipeline.']};
+      const selected=t[role]?role:'student';
+      document.getElementById('modalTitle').textContent=t[selected][0];
+      document.getElementById('modalDesc').textContent=t[selected][1];
+      document.getElementById('role').value=selected;
+      modalOverlay.classList.add('show');document.body.style.overflow='hidden';
+      setTimeout(()=>document.getElementById('name').focus(),150);
+    }
+
+    function closeModal(){modalOverlay.classList.remove('show');document.body.style.overflow=''}
+    modalOverlay.addEventListener('click',e=>{if(e.target===modalOverlay)closeModal()});
+
+    function handleSubmit(e){
+      e.preventDefault();
+      if(!joinForm.checkValidity()){joinForm.reportValidity();return false;}
+      const data={
+        name:document.getElementById('name').value.trim(),
+        email:document.getElementById('email').value.trim(),
+        phone:document.getElementById('phone').value.trim(),
+        role:document.getElementById('role').value,
+        message:document.getElementById('message').value.trim(),
+        submittedAt:new Date().toLocaleString()
+      };
+      try{
+        const saved=JSON.parse(localStorage.getItem('edusphere_leads')||'[]');
+        saved.push(data);
+        localStorage.setItem('edusphere_leads',JSON.stringify(saved));
+        formStatus.textContent='Saved on this device ✓';
+      }catch(err){formStatus.textContent='Submitted for this session ✓'}
+      formView.style.display='none';successMsg.classList.add('show');
+      showToast('Your request has been submitted successfully ✓');
+      return false;
+    }
+
+    const backTop=document.getElementById('backTop');
+    window.addEventListener('scroll',()=>backTop.classList.toggle('show',window.scrollY>500));
+    backTop.addEventListener('click',()=>scrollToSection('home'));
+
+    document.addEventListener('keydown',e=>{
+      if(e.key==='Escape'){closeModal();closeMobile();closeChat();}
+    });
+
+    const chatToggle=document.getElementById('chatToggle'),chatWindow=document.getElementById('chatWindow'),chatClose=document.getElementById('chatClose'),chatMessages=document.getElementById('chatMessages'),chatInput=document.getElementById('chatInput'),chatSend=document.getElementById('chatSend');
+    let chatOpened=false;
+    function openChat(){setActiveNav('ai-help');chatWindow.classList.add('open');chatOpened=true;document.querySelector('.badge-dot')?.remove();
+      if(chatMessages.children.length===0)addBotMessage("नमस्ते! 🧠 मैं <b>EduSphere Problem AI</b> हूँ।<br><br>मैं JEE/Boards level <b>questions solve</b> करता हूँ:<br>• Maths (Quadratic, Integration...)<br>• Physics (Kinematics, Laws...)<br>• Chemistry (Mole, Organic...)<br><br>कोई question पूछो या नीचे buttons use करो!");
+      setTimeout(()=>chatInput.focus(),280)}
+    function closeChat(){chatWindow.classList.remove('open');chatOpened=false}
+    chatToggle.addEventListener('click',()=>chatOpened?closeChat():openChat());
+    chatClose.addEventListener('click',closeChat);
+
+    function addBotMessage(html){const d=document.createElement('div');d.className='msg bot';d.innerHTML=html;chatMessages.appendChild(d);chatMessages.scrollTop=chatMessages.scrollHeight}
+    function addUserMessage(text){const d=document.createElement('div');d.className='msg user';d.textContent=text;chatMessages.appendChild(d);chatMessages.scrollTop=chatMessages.scrollHeight}
+    function showTyping(){const d=document.createElement('div');d.className='msg bot typing';d.id='typingIndicator';d.innerHTML='<span></span><span></span><span></span>';chatMessages.appendChild(d);chatMessages.scrollTop=chatMessages.scrollHeight}
+    function hideTyping(){document.getElementById('typingIndicator')?.remove()}
+
+    function getAIResponse(query){
+      const q=query.toLowerCase().trim();
+      if(/quadratic|x²|x\^2|x2-5x|solve.*equation|समीकरण/.test(q)||/x²-5x\+6|x\^2-5x\+6/.test(q))
+        return `<span class="sol-title">📐 Quadratic Equation: x² − 5x + 6 = 0</span><div class="step-s"><b>Step 1:</b> Factorize → (x − 2)(x − 3) = 0</div><div class="step-s"><b>Step 2:</b> x − 2 = 0 या x − 3 = 0</div><span class="answer">✅ Answer: x = 2 या x = 3</span><br><small style="color:#9bb0d0">General: x = [-b ± √(b²-4ac)] / 2a</small>`;
+      if(/integration|∫|integral|समाकलन/.test(q))
+        return `<span class="sol-title">📐 Basic Integration</span><div class="step-s">∫ xⁿ dx = xⁿ⁺¹/(n+1) + C (n≠−1)</div><div class="step-s">∫ eˣ dx = eˣ + C</div><div class="step-s">∫ 1/x dx = ln|x| + C</div><div class="step-s">∫ sin x dx = −cos x + C</div><span class="answer">Example: ∫(3x²+2x)dx = x³ + x² + C</span>`;
+      if(/probability|प्रायिकता|permutation|combination|ncr|npr/.test(q))
+        return `<span class="sol-title">📐 Probability & Combinatorics</span><div class="step-s"><b>P(A)</b> = Favourable / Total</div><div class="step-s"><b>ⁿCᵣ</b> = n!/[r!(n−r)!]</div><div class="step-s"><b>ⁿPᵣ</b> = n!/(n−r)!</div><span class="answer">Example: ⁵C₂ = 10 | Coin head = 1/2</span>`;
+      if(/vector|सदिश|dot product|cross product/.test(q))
+        return `<span class="sol-title">📐 Vectors</span><div class="step-s"><b>Dot:</b> a·b = |a||b|cosθ = a₁b₁+a₂b₂+a₃b₃</div><div class="step-s"><b>Cross:</b> a×b = |a||b|sinθ n̂</div><span class="answer">a·b=0 → perpendicular</span>`;
+      if(/kinematics|गति|velocity|acceleration|s\s*=|v\s*=|u\s*=/.test(q))
+        return `<span class="sol-title">⚛️ Kinematics Equations</span><div class="step-s">1. v = u + at</div><div class="step-s">2. s = ut + ½at²</div><div class="step-s">3. v² = u² + 2as</div><div class="step-s">4. sₙ = u + a(n−½)</div><span class="answer">Tip: Take direction consistently (+/−)</span>`;
+      if(/newton|law of motion|force|f\s*=\s*ma|गति के नियम/.test(q))
+        return `<span class="sol-title">⚛️ Newton's Laws</span><div class="step-s"><b>1st:</b> Inertia</div><div class="step-s"><b>2nd:</b> F = ma</div><div class="step-s"><b>3rd:</b> Action = −Reaction</div><span class="answer">Always draw Free Body Diagram!</span>`;
+      if(/electrostatic|coulomb|electric field|विद्युत/.test(q))
+        return `<span class="sol-title">⚛️ Electrostatics</span><div class="step-s"><b>Coulomb:</b> F = k q₁q₂ / r²</div><div class="step-s"><b>Field:</b> E = kq/r²</div><div class="step-s"><b>Potential:</b> V = kq/r</div><span class="answer">k = 9×10⁹</span>`;
+      if(/modern physics|photoelectric|bohr|atom/.test(q))
+        return `<span class="sol-title">⚛️ Modern Physics</span><div class="step-s"><b>Photoelectric:</b> E=hν=φ+KE<sub>max</sub></div><div class="step-s"><b>de Broglie:</b> λ=h/p</div><div class="step-s"><b>Bohr:</b> Eₙ=−13.6/n² eV</div><span class="answer">φ = hν₀</span>`;
+      if(/mole|मोल|avogadro|molar/.test(q))
+        return `<span class="sol-title">🧪 Mole Concept</span><div class="step-s">1 mole = 6.022×10²³ particles</div><div class="step-s">Moles = mass / molar mass</div><div class="step-s">Moles = V(L)/22.4 (STP gas)</div><span class="answer">18g H₂O = 1 mole</span>`;
+      if(/organic|reaction|alkene|alkane|alcohol/.test(q))
+        return `<span class="sol-title">🧪 Organic Basics</span><div class="step-s"><b>Alkane:</b> CₙH₂ₙ₊₂</div><div class="step-s"><b>Alkene:</b> CₙH₂ₙ</div><div class="step-s"><b>Alkyne:</b> CₙH₂ₙ₋₂</div><span class="answer">Markownikov rule for alkenes</span>`;
+      if(/equilibrium|le chatelier|kc|kp|साम्यावस्था/.test(q))
+        return `<span class="sol-title">🧪 Equilibrium</span><div class="step-s">K<sub>c</sub> = [Products]/[Reactants]</div><div class="step-s">K<sub>p</sub> = K<sub>c</sub>(RT)<sup>Δn</sup></div><div class="step-s"><b>Le Chatelier:</b> System counters change</div><span class="answer">Δn=0 → Kₚ=K<sub>c</sub></span>`;
+      if(/mentor|मेंटर|kaise banu|join.*mentor/.test(q))
+        return "🎓 <b>Mentor बनने के लिए:</b><br>• IIT/NIT में पढ़ रहे हों<br>• Join as Mentor बटन से फॉर्म भरें<br>• ₹500–2000/session + Certificate + LOR";
+      if(/student|fees|फीस|price|kitni/.test(q))
+        return "🏫 <b>Students:</b> Affordable mentorship for JEE/Boards। Exact fees join पर मिलेगी। AI practice free है!";
+      if(/college|partner|revenue|30%/.test(q))
+        return "🏛️ <b>College Partner:</b> 30% revenue share + branding + 500+ pipeline। Partner as College से inquiry करें।";
+      if(/how|kaise|काम|work|process/.test(q))
+        return "⚡ <b>Process:</b> Sign Up → AI Match / Ask Questions → Sessions + Solve → Grow & Earn";
+      if(/about|kya hai|edusphere|tech spark/.test(q))
+        return "🌟 <b>EduSphere 3D</b> = Mentorship + Problem-Solving AI। By <b>Tech Spark Pvt. Ltd.</b> for Engineer's Day 2026.";
+      if(/hi|hello|hey|namaste|नमस्ते/.test(q))
+        return "नमस्ते! 😊 Question पूछो — Maths, Physics या Chemistry। मैं step-by-step solve करूँगा।";
+      if(/thank|धन्यवाद|thanks/.test(q))
+        return "आपका स्वागत है! 💙 और कोई question हो तो पूछो।";
+      return `मैं ये solve कर सकता हूँ:<br>• <b>Maths:</b> Quadratic, Integration, Probability, Vectors<br>• <b>Physics:</b> Kinematics, Newton's Laws, Electrostatics<br>• <b>Chemistry:</b> Mole Concept, Organic, Equilibrium<br><br>उदाहरण: <i>"solve quadratic equation"</i> या <i>"physics kinematics"</i>`;
+    }
+
+    function sendMessage(text){
+      if(!text||!text.trim())return;
+      addUserMessage(text.trim());chatInput.value='';
+      document.getElementById('quickReplies').style.display='none';
+      showTyping();
+      setTimeout(()=>{hideTyping();addBotMessage(getAIResponse(text))},650+Math.random()*500);
+    }
+    chatSend.addEventListener('click',()=>sendMessage(chatInput.value));
+    chatInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage(chatInput.value)}});
+    document.querySelectorAll('.quick-reply').forEach(btn=>btn.addEventListener('click',()=>sendMessage(btn.getAttribute('data-q'))));
+
+    (function init3D(){
+      try{
+        if(typeof THREE==='undefined'){document.getElementById('webgl-fallback').style.display='block';return}
+        const container=document.getElementById('canvas-container'),scene=new THREE.Scene();
+        const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,.1,1000);
+        const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+        renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+        container.appendChild(renderer.domElement);
+        const pc=850,pos=new Float32Array(pc*3),cols=new Float32Array(pc*3);
+        const c1=new THREE.Color(0x00e5ff),c2=new THREE.Color(0x7c4dff),c3=new THREE.Color(0xff2e97);
+        for(let i=0;i<pc;i++){const i3=i*3;pos[i3]=(Math.random()-.5)*36;pos[i3+1]=(Math.random()-.5)*36;pos[i3+2]=(Math.random()-.5)*36;
+          const col=Math.random()>.55?c1:(Math.random()>.5?c2:c3);cols[i3]=col.r;cols[i3+1]=col.g;cols[i3+2]=col.b}
+        const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(pos,3));geo.setAttribute('color',new THREE.BufferAttribute(cols,3));
+        const particles=new THREE.Points(geo,new THREE.PointsMaterial({size:.07,vertexColors:true,transparent:true,opacity:.78,sizeAttenuation:true,blending:THREE.AdditiveBlending,depthWrite:false}));
+        scene.add(particles);
+        const shapes=[],geos=[new THREE.IcosahedronGeometry(.5,0),new THREE.TorusGeometry(.42,.15,12,32),new THREE.OctahedronGeometry(.48),new THREE.TetrahedronGeometry(.55)];
+        for(let i=0;i<6;i++){const mesh=new THREE.Mesh(geos[i%4],new THREE.MeshBasicMaterial({color:i%2===0?0x00e5ff:0x7c4dff,wireframe:true,transparent:true,opacity:.3}));
+          mesh.position.set((Math.random()-.5)*15,(Math.random()-.5)*10,(Math.random()-.5)*13-4);
+          mesh.userData={rot:{x:(Math.random()-.5)*.016,y:(Math.random()-.5)*.016,z:(Math.random()-.5)*.008},fs:Math.random()*.006+.003,fo:Math.random()*Math.PI*2};
+          scene.add(mesh);shapes.push(mesh)}
+        const core=new THREE.Mesh(new THREE.IcosahedronGeometry(1.05,1),new THREE.MeshBasicMaterial({color:0x00e5ff,wireframe:true,transparent:true,opacity:.2}));scene.add(core);
+        const core2=new THREE.Mesh(new THREE.IcosahedronGeometry(.6,0),new THREE.MeshBasicMaterial({color:0x7c4dff,wireframe:true,transparent:true,opacity:.35}));scene.add(core2);
+        camera.position.z=11;
+        let mx=0,my=0;
+        document.addEventListener('mousemove',e=>{mx=(e.clientX/window.innerWidth)*2-1;my=-(e.clientY/window.innerHeight)*2+1});
+        document.addEventListener('touchmove',e=>{if(e.touches[0]){mx=(e.touches[0].clientX/window.innerWidth)*2-1;my=-(e.touches[0].clientY/window.innerHeight)*2+1}},{passive:true});
+        const clock=new THREE.Clock();
+        function animate(){requestAnimationFrame(animate);const t=clock.getElapsedTime();
+          particles.rotation.y=t*.04;particles.rotation.x=Math.sin(t*.08)*.07;
+          shapes.forEach(s=>{s.rotation.x+=s.userData.rot.x;s.rotation.y+=s.userData.rot.y;s.position.y+=Math.sin(t*s.userData.fs+s.userData.fo)*.006});
+          core.rotation.x=t*.13;core.rotation.y=t*.17;core2.rotation.x=-t*.2;core2.rotation.y=-t*.15;
+          const sc=1+Math.sin(t*1.3)*.06;core.scale.set(sc,sc,sc);
+          camera.position.x+=(mx*1.6-camera.position.x)*.022;camera.position.y+=(my*1.2-camera.position.y)*.022;camera.lookAt(0,0,0);
+          renderer.render(scene,camera)}
+        animate();
+        window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight)});
+      }catch(e){document.getElementById('webgl-fallback').style.display='block'}
+    })();
+  </script>
+</body>
+</html>
