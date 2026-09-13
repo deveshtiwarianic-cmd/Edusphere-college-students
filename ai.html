@@ -129,7 +129,7 @@
     .chat-send:hover{transform:scale(1.08)}
     .quick-replies{display:flex;flex-wrap:wrap;gap:.35rem;padding:0 .9rem .55rem}
     .quick-reply{background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.22);color:var(--primary);padding:.32rem .7rem;border-radius:18px;font-size:.75rem;cursor:pointer;transition:all .2s;font-family:inherit}
-    .quick-reply:hover{background:rgba(0,229,255,.16)}
+    .quick-reply:hover{background:rgba(0,229,255,.16)} .quick-reply:active{transform:scale(.97)}
     .msg.bot .sol-title{color:var(--primary);font-weight:600;margin-bottom:.3rem;display:block}
     .msg.bot .step-s{margin:.25rem 0;padding-left:.3rem}
     .msg.bot .answer{color:var(--success);font-weight:600;margin-top:.4rem;display:block}
@@ -385,10 +385,13 @@ body.page-ai .chat-window{display:flex !important}
       <div id="usageText" style="font-size:.68rem;color:#7185a6;margin-top:5px"></div>
     </div>
     <div class="quick-replies" id="quickReplies">
-      <button class="quick-reply" data-q="solve quadratic equation x²-5x+6=0">Quadratic Eqn</button>
-      <button class="quick-reply" data-q="physics kinematics">Kinematics</button>
-      <button class="quick-reply" data-q="chemistry mole concept">Mole Concept</button>
-      <button class="quick-reply" data-q="mentor kaise banu">Mentor कैसे?</button>
+      <div style="width:100%;font-size:.72rem;color:#9bb0d0;margin-bottom:2px">⚡ Quick Start — tap any option</div>
+      <button class="quick-reply" data-q="solve quadratic equation x²-5x+6=0">📐 Quadratic</button>
+      <button class="quick-reply" data-q="Explain kinematics with formulas and one example">⚡ Kinematics</button>
+      <button class="quick-reply" data-q="Explain mole concept with an easy example">🧪 Mole Concept</button>
+      <button class="quick-reply" data-q="Give me 5 JEE Maths practice questions with answers">🎯 JEE Practice</button>
+      <button class="quick-reply" data-q="Explain this topic in simple Hinglish">💡 Explain Topic</button>
+      <a class="quick-reply" href="notes.html" style="text-decoration:none">📄 AI Notes</a>
     </div>
     <div class="chat-input-area">
       <input type="text" id="chatInput" placeholder="Question पूछो..." autocomplete="off">
@@ -499,7 +502,7 @@ body.page-ai .chat-window{display:flex !important}
     function saveHistory(){localStorage.setItem('edusphere_ai_history',JSON.stringify(aiHistory.slice(-20)))}
     function loadHistory(){try{const x=JSON.parse(localStorage.getItem('edusphere_ai_history')||'[]');return Array.isArray(x)?x:[]}catch(e){return []}}
     function openChat(){setActiveNav('ai-help');chatWindow.classList.add('open');chatOpened=true;document.querySelector('.badge-dot')?.remove();
-      if(chatMessages.children.length===0){aiHistory=loadHistory();if(aiHistory.length){aiHistory.filter(m=>m.role==='user'||m.role==='assistant').forEach(m=>m.role==='user'?addUserMessage(m.content):addBotMessage(m.content,true));}else addBotMessage("नमस्ते! 🧠 मैं <b>EduSphere Problem AI</b> हूँ।<br><br>Subject चुनो और अपना सवाल पूछो। Photo से question भी भेज सकते हो!",true)}
+      if(chatMessages.children.length===0){aiHistory=loadHistory();if(aiHistory.length){aiHistory.filter(m=>m.role==='user'||m.role==='assistant').forEach(m=>m.role==='user'?addUserMessage(m.content):addBotMessage(m.content,true));}else addBotMessage("नमस्ते! 🧠 मैं <b>EduSphere Problem AI</b> हूँ।<br><br>नीचे <b>Quick Start</b> में कोई option tap करो, या अपना JEE/Boards question लिखो। Photo से question भी भेज सकते हो!",true)}
       updateUsage();setTimeout(()=>chatInput.focus(),280)}
     function closeChat(){chatWindow.classList.remove('open');chatOpened=false}
     chatToggle.addEventListener('click',()=>chatOpened?closeChat():openChat());chatClose.addEventListener('click',closeChat);
@@ -520,7 +523,7 @@ body.page-ai .chat-window{display:flex !important}
         const answer=data.text||'No response received.';aiHistory.push({role:'assistant',content:answer});saveHistory();setApiStatus('EduSphere AI • online ✓',true);return answer;
       }catch(err){console.error(err);setApiStatus('AI request failed');return `⚠️ <b>AI response nahi aa paayi.</b><br><small>${String(err.message||'Server error').slice(0,180)}</small>`}
     }
-    async function sendMessage(text,imageData=null){if(!text||!text.trim()||!canUse())return;const q=text.trim();addUserMessage(imageData?'📷 Photo question: '+q:q);chatInput.value='';document.getElementById('quickReplies').style.display='none';showTyping();chatSend.disabled=true;chatInput.disabled=true;countUse();const answer=await getAIResponse(q,imageData);hideTyping();addBotMessage(answer);chatSend.disabled=false;chatInput.disabled=false;chatInput.focus()}
+    async function sendMessage(text,imageData=null){if(!text||!text.trim()||!canUse())return;const q=text.trim();addUserMessage(imageData?'📷 Photo question: '+q:q);chatInput.value='';document.getElementById('quickReplies').style.display='flex';showTyping();chatSend.disabled=true;chatInput.disabled=true;countUse();const answer=await getAIResponse(q,imageData);hideTyping();addBotMessage(answer);chatSend.disabled=false;chatInput.disabled=false;chatInput.focus()}
     chatSend.addEventListener('click',()=>sendMessage(chatInput.value));chatInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage(chatInput.value)}});
     document.querySelectorAll('.quick-reply').forEach(btn=>btn.addEventListener('click',()=>sendMessage(btn.getAttribute('data-q'))));
     document.querySelectorAll('.subject-chip').forEach(btn=>{if(btn.dataset.subject===currentSubject)btn.classList.add('active');btn.addEventListener('click',()=>{currentSubject=btn.dataset.subject;localStorage.setItem('edusphere_ai_subject',currentSubject);document.querySelectorAll('.subject-chip').forEach(x=>x.classList.toggle('active',x===btn));showToast(`${currentSubject} mode selected ✓`)})});
