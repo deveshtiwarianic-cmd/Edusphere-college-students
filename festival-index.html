@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>College Memories | Connect • Remember • Inspire</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Great+Vibes&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#080808;color:#fff;font-family:Poppins,sans-serif}body:before,body:after{content:"";position:fixed;width:230px;height:230px;border-radius:50%;filter:blur(80px);opacity:.2;z-index:-1}body:before{background:#d4af37;left:-100px;top:10%}body:after{background:#900;right:-100px;bottom:10%}header{position:fixed;top:0;left:0;right:0;z-index:20;background:#080808dd;backdrop-filter:blur(14px);border-bottom:1px solid #d4af3755}.nav{max-width:1150px;margin:auto;padding:10px 18px;display:flex;justify-content:space-between;align-items:center}.logo{width:45px;height:45px;object-fit:contain}.music{width:42px;height:42px;border-radius:50%;background:#151515;color:#e1bd58;border:1px solid #d4af37;cursor:pointer}.welcome{position:fixed;inset:0;z-index:100;background:radial-gradient(circle,#2b2108,#050505 70%);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;overflow:hidden}.welcome-box{position:relative;z-index:6;max-width:700px;padding:42px 25px;border:1px solid #d4af37;border-radius:25px;background:#090909ee;box-shadow:0 0 60px #d4af3766}.welcome-logo{width:95px}.script{font-family:'Great Vibes',cursive;color:#e4c66b;font-size:45px}.welcome h1,.hero h1,.title{font-family:Cinzel,serif}.welcome h1{font-size:clamp(32px,8vw,65px)}.gold{color:#e1bd58}.btn{display:inline-block;border:1px solid #d4af37;background:linear-gradient(135deg,#e1bd58,#8d6815);color:#080808;padding:12px 22px;border-radius:999px;font-weight:700;cursor:pointer;text-decoration:none}.hero{min-height:90vh;padding:90px 18px 40px;display:flex;align-items:center;justify-content:center;text-align:center}.hero h1{font-size:clamp(40px,9vw,82px);line-height:1.05}.hero p{max-width:760px;color:#ccc;margin:15px auto}.countdown{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:28px 0}.time{min-width:82px;padding:12px;border:1px solid #d4af3766;border-radius:15px;background:#111}.time b{display:block;font-size:25px;color:#e1bd58}.time small{color:#aaa}section{max-width:1150px;margin:auto;padding:65px 18px}.title{text-align:center;color:#e1bd58;font-size:clamp(28px,5vw,45px);margin-bottom:32px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.card{background:linear-gradient(145deg,#171717,#0d0d0d);border:1px solid #d4af3744;border-radius:22px;padding:24px}.chairman,.campus{width:100%;border-radius:18px;border:1px solid #d4af3766}.quote{font:35px 'Great Vibes',cursive;color:#ead17d;text-align:center;padding:25px}.depts,.stats,.memories{display:grid;gap:16px}.depts,.stats{grid-template-columns:repeat(4,1fr)}.dept,.stat{background:#111;border:1px solid #d4af3744;border-radius:18px;padding:23px;text-align:center}.icon{font-size:35px}.stat strong{display:block;font-size:32px;color:#e1bd58}.memory-top{text-align:center}.memory-form{display:none;max-width:700px;margin:25px auto;padding:24px;background:#101010;border:1px solid #d4af3766;border-radius:20px}.memory-form.open{display:block}input,textarea{width:100%;padding:13px;margin:7px 0 12px;border-radius:12px;border:1px solid #555;background:#080808;color:#fff;font:inherit}textarea{min-height:120px}.file-label{display:block;text-align:center;padding:18px;border:1px dashed #d4af37aa;border-radius:14px;color:#e1bd58;cursor:pointer;margin:8px 0 15px}.file-label input{display:none}.preview{display:none;width:100%;max-height:330px;object-fit:cover;border-radius:14px;margin-bottom:15px}.form-actions{display:flex;gap:10px;flex-wrap:wrap}.secondary{background:#222;color:#fff;border-color:#555}.memories{grid-template-columns:repeat(3,1fr);margin-top:25px}.memory{overflow:hidden;padding:0}.memory img{width:100%;height:230px;object-fit:cover}.memory-body{padding:18px}.memory-body h3{margin:0;color:#e1bd58}.memory-body small{color:#999}.delete{margin-top:12px;background:#260b0b;color:#ffb0b0;border:1px solid #733;padding:7px 12px;border-radius:9px;cursor:pointer}.empty{text-align:center;color:#999;border:1px dashed #555;border-radius:15px;padding:25px;grid-column:1/-1}.letter{display:none;max-width:800px;margin:25px auto;padding:30px;border:1px solid #d4af3777;border-radius:20px;background:#111}.letter.show{display:block}.wish{text-align:center}footer{text-align:center;padding:35px 18px;border-top:1px solid #d4af3744;color:#aaa}footer .developed{color:#e1bd58;margin-top:6px}.long-section{padding-top:90px;padding-bottom:90px}.message-card{position:relative;overflow:hidden;background:linear-gradient(145deg,#18140a,#0c0c0c);border:1px solid #d4af3766;border-radius:26px;padding:34px;box-shadow:0 15px 50px #0008}.message-card:before{content:"“";position:absolute;right:20px;top:-35px;font:180px Georgia;color:#d4af3718}.message-card h3{font-family:Cinzel,serif;color:#e1bd58;font-size:26px;margin:0 0 15px}.message-card p{color:#d6d6d6;line-height:1.9;margin:10px 0}.signature{margin-top:24px;color:#e1bd58;font-weight:700}.line-wall{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.day-line{padding:24px;border-left:3px solid #d4af37;border-radius:16px;background:linear-gradient(110deg,#171717,#0b0b0b);border-top:1px solid #d4af3722;border-right:1px solid #d4af3722;border-bottom:1px solid #d4af3722;color:#eee;line-height:1.8}.day-line span{display:block;color:#e1bd58;font-family:'Great Vibes',cursive;font-size:29px;margin-bottom:5px}.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.timeline .card{min-height:190px}.hero-badge{display:inline-block;padding:8px 16px;border:1px solid #d4af3766;border-radius:999px;color:#e1bd58;background:#111;margin-bottom:15px;letter-spacing:1px}.intro-text{max-width:850px;margin:0 auto;text-align:center;color:#bbb;line-height:1.9}.memory-top p{line-height:1.8}.wish .letter p{line-height:1.9}@media(max-width:800px){.line-wall,.timeline{grid-template-columns:1fr}}@media(max-width:800px){.grid,.memories{grid-template-columns:1fr}.depts,.stats{grid-template-columns:1fr 1fr}}@media(max-width:480px){section{padding:50px 14px}.time{min-width:70px}.time b{font-size:21px}}
+
+/* TECH SPARK opening screen — curtain removed */
+.welcome{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 50% 35%,#1a1530 0,#09080f 42%,#030305 100%);}
+.welcome::before{content:"";position:absolute;inset:-30%;background:conic-gradient(from 0deg,transparent 0 25%,rgba(212,175,55,.10) 32%,transparent 42%,rgba(120,90,255,.10) 58%,transparent 70%);animation:spinGlow 18s linear infinite;}
+.welcome-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:45px 45px;mask-image:radial-gradient(circle,black 20%,transparent 78%);}
+.welcome-orb{position:absolute;border-radius:50%;filter:blur(2px);opacity:.45;animation:floatOrb 7s ease-in-out infinite;}
+.orb1{width:280px;height:280px;background:radial-gradient(circle,rgba(212,175,55,.30),transparent 68%);top:8%;left:8%;}
+.orb2{width:340px;height:340px;background:radial-gradient(circle,rgba(91,68,180,.28),transparent 68%);right:5%;bottom:5%;animation-delay:-3s;}
+.welcome-box{position:relative;z-index:5;width:min(92%,720px);padding:34px 24px 30px;text-align:center;border:1px solid rgba(212,175,55,.24);border-radius:30px;background:rgba(8,8,14,.60);box-shadow:0 30px 100px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(18px);animation:welcomeIn 1s ease both;}
+.tech-brand{display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;padding:8px 15px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(255,255,255,.045);letter-spacing:2px;font-size:11px;color:#e8e8e8;}
+.tech-brand img{width:34px;height:34px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(255,255,255,.35));}
+.welcome-logo{width:82px;height:82px;object-fit:contain;margin:2px auto 12px;filter:drop-shadow(0 0 22px rgba(212,175,55,.35));}
+.welcome-box .script{font-size:18px;color:#bcae8b;letter-spacing:3px;}
+.welcome-box h1{font-size:clamp(38px,8vw,72px);margin:6px 0 10px;letter-spacing:4px;line-height:1.05;}
+.welcome-box>p{max-width:610px;margin:0 auto 22px;color:#bdbdbd;line-height:1.8;font-size:15px;}
+.welcome-pills{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:0 0 22px;}
+.welcome-pills span{padding:8px 12px;border-radius:999px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.20);color:#ddd;font-size:12px;}
+.welcome .btn{box-shadow:0 0 0 1px rgba(212,175,55,.16),0 10px 35px rgba(212,175,55,.12);}
+.scroll-hint{margin-top:13px;color:#777;font-size:11px;letter-spacing:1px;animation:pulseHint 1.8s ease-in-out infinite;}
+.welcome-hide{animation:welcomeOut .85s ease forwards;pointer-events:none;}
+@keyframes welcomeIn{from{opacity:0;transform:translateY(25px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes welcomeOut{to{opacity:0;transform:scale(1.04);filter:blur(7px)}}
+@keyframes spinGlow{to{transform:rotate(360deg)}}
+@keyframes floatOrb{50%{transform:translate(25px,-20px) scale(1.08)}}
+@keyframes pulseHint{50%{opacity:.45;transform:translateY(3px)}}
+@media(max-width:480px){.welcome-box{padding:28px 15px 24px;border-radius:24px}.welcome-logo{width:70px;height:70px}.tech-brand{margin-bottom:12px}.welcome-box h1{letter-spacing:2px}.welcome-box>p{font-size:13px}}
+
+/* PROFESSIONAL COLLEGE MEMORIES V2 */
+.nav-brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:1.5px}.nav-brand img{width:38px;height:38px;object-fit:contain;border-radius:50%;background:#000}.nav-brand span{font-size:13px;color:#e1bd58}.pro-hero{display:none;min-height:78vh;padding:130px 18px 70px;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 20%,#201808,#080808 60%)}.pro-hero.show{display:flex}.pro-hero h1{font-family:Cinzel,serif;font-size:clamp(42px,9vw,86px);margin:14px 0}.pro-hero .lead{max-width:760px;color:#c9c9c9;margin:auto;line-height:1.8}.hero.hide-event{display:none}.hero-badge{display:inline-block;border:1px solid #d4af3766;padding:8px 14px;border-radius:999px;color:#e1bd58}.section-intro{text-align:center;color:#aaa;max-width:760px;margin:-15px auto 30px;line-height:1.7}.reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.form-card{background:linear-gradient(145deg,#171717,#0b0b0b);border:1px solid #d4af3744;border-radius:22px;padding:24px}.form-card h3{margin-top:0}.profile-preview{display:none;width:110px;height:110px;border-radius:50%;object-fit:cover;border:2px solid #d4af37;margin:10px auto}.students-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}.student-card{background:#111;border:1px solid #d4af3744;border-radius:20px;padding:18px;text-align:center}.student-card img{width:90px;height:90px;border-radius:50%;object-fit:cover;border:1px solid #d4af37}.student-card h3{margin:10px 0 3px}.student-card small{color:#aaa}.student-card p{color:#bbb;font-size:13px}.searchbar{max-width:650px;margin:0 auto 22px}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feature-card{background:linear-gradient(145deg,#171717,#0d0d0d);border:1px solid #d4af3744;border-radius:20px;padding:24px}.feature-card .bigicon{font-size:38px}.like-btn{border:1px solid #d4af3766;background:#0d0d0d;color:#e1bd58;border-radius:999px;padding:8px 13px;cursor:pointer}.like-btn.liked{background:#3b0d16}.memory-meta{display:flex;justify-content:space-between;align-items:center;gap:10px}.timeline-pro{position:relative;max-width:900px;margin:auto}.timeline-pro .step{border-left:2px solid #d4af3766;padding:0 0 28px 25px;position:relative}.timeline-pro .step:before{content:'';position:absolute;left:-7px;top:3px;width:12px;height:12px;border-radius:50%;background:#e1bd58;box-shadow:0 0 16px #d4af37}.vision-box{max-width:800px;margin:auto}.counter{font-size:12px;color:#888;text-align:right}.success{color:#8bd48b}.footer-tech{padding:70px 18px;text-align:center;border-top:1px solid #d4af3733;background:#050505}.footer-tech img{width:75px;height:75px;object-fit:contain;border-radius:50%;background:#000}.footer-tech .brand{font-size:22px;font-weight:700;letter-spacing:4px;color:#e1bd58;margin:12px}.footer-tech .creator{font-size:16px;color:#ddd}.hidden{display:none!important}@media(max-width:800px){.reg-grid,.feature-grid{grid-template-columns:1fr}.students-grid{grid-template-columns:1fr 1fr}}@media(max-width:480px){.students-grid{grid-template-columns:1fr}.nav-brand span{display:none}.pro-hero{min-height:72vh}.form-card{padding:18px}}
+
+.bottom-nav{display:none!important;pointer-events:none;touch-action:manipulation;position:fixed;z-index:9999;left:50%;bottom:14px;transform:translateX(-50%);width:min(94%,520px);display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:9px;background:rgba(15,18,28,.94);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);border-radius:22px;box-shadow:0 12px 35px rgba(0,0,0,.35)}
+.nav-item{pointer-events:auto;touch-action:manipulation;-webkit-tap-highlight-color:transparent;display:block;cursor:pointer;color:#aaa;text-decoration:none;text-align:center;padding:7px 4px;border-radius:16px;transition:.2s}.nav-item span{display:block;font-size:20px}.nav-item small{font-size:11px}.nav-item.active,.nav-item:hover{color:#fff;background:rgba(255,255,255,.09)}
+.nav-page{display:none;padding:30px 0 110px}.nav-page.show{display:block}.qr-box{display:grid;gap:14px;max-width:500px;margin:20px auto}.qr-input{width:100%;box-sizing:border-box;padding:13px;border-radius:10px;border:1px solid #ddd}.food-grid,.games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-top:20px}.mini-card{padding:20px;border-radius:18px;background:rgba(255,255,255,.06);text-align:center}.qr-reader{width:100%;min-height:210px;border:2px dashed rgba(255,255,255,.2);border-radius:18px;display:flex;align-items:center;justify-content:center;text-align:center;padding:15px;box-sizing:border-box}
+body{padding-bottom:95px}
+
+.nav-page{display:none;padding:25px 0 100px}.nav-page.show{display:block}.bottom-nav{overflow-x:hidden}.bottom-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.bottom-nav .nav-item{min-width:0}.qr-input{box-sizing:border-box}.food-grid,.games-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}.mini-card button{margin-top:8px}
+
+/* ENGINEERING DAY 3D CAMPUS EXPERIENCE */
+.campus-3d-wrap{perspective:1200px;margin:30px auto 0;max-width:1000px}
+.campus-3d{position:relative;transform-style:preserve-3d;transition:transform .35s ease;will-change:transform}
+.campus-3d:hover{transform:rotateX(3deg) rotateY(-3deg) translateY(-4px)}
+.campus-3d::before{content:"";position:absolute;inset:12px -12px -18px 12px;border-radius:24px;background:linear-gradient(145deg,rgba(212,175,55,.38),rgba(60,45,10,.05));transform:translateZ(-35px);filter:blur(1px);box-shadow:0 25px 70px rgba(0,0,0,.7)}
+.campus-frame{position:relative;transform:translateZ(28px);padding:10px;border:1px solid rgba(212,175,55,.65);border-radius:24px;background:linear-gradient(145deg,#1b1b1b,#080808);box-shadow:0 22px 55px rgba(0,0,0,.6),inset 0 1px rgba(255,255,255,.12)}
+.campus-frame .campus{display:block;margin:0;aspect-ratio:16/9;object-fit:cover}
+.campus-logo-3d{position:absolute;left:50%;top:50%;width:92px;height:92px;object-fit:contain;transform:translate(-50%,-50%) translateZ(70px);filter:drop-shadow(0 15px 20px rgba(0,0,0,.75)) drop-shadow(0 0 24px rgba(212,175,55,.45));border-radius:50%;background:rgba(0,0,0,.35);padding:7px;backdrop-filter:blur(6px);border:1px solid rgba(212,175,55,.45)}
+.campus-badge-3d{position:absolute;left:22px;bottom:20px;transform:translateZ(55px);padding:9px 14px;border-radius:999px;background:rgba(5,5,5,.72);border:1px solid rgba(212,175,55,.55);color:#e6c76a;font-weight:700;letter-spacing:1px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.campus-floor{height:18px;margin:-4px 22px 0;border-radius:0 0 22px 22px;background:linear-gradient(90deg,#4a3710,#d4af37,#4a3710);transform:translateZ(-2px) rotateX(58deg);opacity:.55;filter:blur(.3px)}
+@media(max-width:600px){.campus-3d:hover{transform:none}.campus-logo-3d{width:72px;height:72px}.campus-badge-3d{left:16px;bottom:16px;font-size:11px}.campus-frame{padding:7px}}
+/* stronger mobile touch target */
+.bottom-nav .nav-item{position:relative;z-index:50;touch-action:manipulation;-webkit-tap-highlight-color:transparent;cursor:pointer}
+</style><style>.mag-grid,.campus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.mag-card,.camp-card{background:linear-gradient(145deg,#171717,#0b0b0b);border:1px solid #d4af3744;border-radius:20px;padding:22px}.mag-card h3,.camp-card h3{color:#e1bd58;margin:8px 0}.mag-icon{font-size:38px}.map-box{border:1px solid #d4af3766;border-radius:20px;padding:22px;background:#111;text-align:center}.rating-overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(10px);z-index:10000;display:none;align-items:center;justify-content:center;padding:18px}.rating-overlay.show{display:flex}.rating-box{width:min(100%,520px);background:#101010;border:1px solid #d4af37;border-radius:24px;padding:25px;box-shadow:0 20px 70px #000}.stars{display:flex;justify-content:center;gap:8px;margin:15px 0}.star{font-size:38px;color:#555;background:none;border:0;cursor:pointer}.star.on{color:#e1bd58}.rating-box textarea{min-height:90px}.notice{font-size:12px;color:#999;line-height:1.6}@media(max-width:800px){.mag-grid,.campus-grid{grid-template-columns:1fr 1fr}}@media(max-width:480px){.mag-grid,.campus-grid{grid-template-columns:1fr}}</style><style>
+/* PREMIUM PAPER PLANE MEMORY EXPERIENCE */
+.paper-stage{position:relative;min-height:250px;margin:25px auto 45px;display:flex;align-items:center;justify-content:center;perspective:1200px;overflow:hidden;border-radius:32px;background:radial-gradient(circle at 50% 35%,rgba(212,175,55,.14),transparent 45%),linear-gradient(135deg,rgba(255,255,255,.035),rgba(212,175,55,.04));border:1px solid rgba(212,175,55,.3);box-shadow:inset 0 0 60px rgba(212,175,55,.05),0 25px 80px rgba(0,0,0,.3)}
+.paper-stage:before,.paper-stage:after{content:"";position:absolute;border-radius:50%;filter:blur(2px);opacity:.7;animation:orbitGlow 5s linear infinite}.paper-stage:before{width:8px;height:8px;background:#f6d96a;box-shadow:0 0 18px #d4af37;top:22%;left:18%}.paper-stage:after{width:5px;height:5px;background:#fff1a8;box-shadow:0 0 16px #d4af37;right:20%;bottom:20%;animation-delay:1.5s}
+.paper-plane-btn{position:relative;width:210px;height:150px;border:0;background:transparent;cursor:pointer;transform-style:preserve-3d;animation:planeFloat 3.8s ease-in-out infinite;filter:drop-shadow(0 28px 22px rgba(0,0,0,.45));touch-action:manipulation}
+.paper-plane{position:absolute;left:20px;top:25px;width:170px;height:105px;transform:rotate(-10deg) rotateX(8deg) rotateY(-8deg);transform-style:preserve-3d}
+.paper-plane .wing{position:absolute;inset:0;background:linear-gradient(145deg,#fffdf4,#d8d2bf 55%,#9e967f);clip-path:polygon(0 0,100% 25%,48% 100%,39% 61%);border:1px solid rgba(255,255,255,.55);box-shadow:inset -12px -10px 22px rgba(70,55,30,.18)}
+.paper-plane .wing2{position:absolute;inset:0;background:linear-gradient(160deg,#eee9db,#aaa18c);clip-path:polygon(0 0,39% 61%,48% 100%,100% 25%);opacity:.78;transform:translateZ(-8px)}
+.paper-plane .crease{position:absolute;width:118px;height:2px;background:rgba(90,75,45,.5);left:31px;top:64px;transform:rotate(-25deg) translateZ(8px);box-shadow:0 0 4px rgba(255,255,255,.7)}
+.paper-plane .gold-edge{position:absolute;width:115px;height:3px;background:linear-gradient(90deg,transparent,#d4af37,#fff0a0,transparent);left:48px;top:41px;transform:rotate(-25deg) translateZ(10px);animation:goldRun 1.8s linear infinite}
+.paper-caption{text-align:center;position:absolute;bottom:15px;left:0;right:0;color:#e7cf76;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-shadow:0 0 12px rgba(212,175,55,.55)}
+@keyframes planeFloat{0%,100%{transform:translate3d(0,4px,0) rotate(-2deg)}50%{transform:translate3d(18px,-14px,40px) rotate(4deg)}}
+@keyframes goldRun{0%{opacity:.15;transform:rotate(-25deg) translateX(-25px) translateZ(10px)}50%{opacity:1}100%{opacity:.15;transform:rotate(-25deg) translateX(25px) translateZ(10px)}}
+@keyframes orbitGlow{50%{transform:translate(35px,-22px) scale(1.35);opacity:1}}
+.quick-3d{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:28px auto;max-width:950px}.quick-card{position:relative;padding:25px 18px;text-align:center;border-radius:24px;background:linear-gradient(145deg,#1b1b1b,#090909);border:1px solid rgba(212,175,55,.35);box-shadow:12px 18px 0 rgba(212,175,55,.04),0 22px 55px rgba(0,0,0,.35);transform:perspective(800px) rotateX(4deg);transition:.35s;cursor:pointer}.quick-card:hover{transform:perspective(800px) rotateX(0) translateY(-8px) rotateY(-2deg);box-shadow:0 25px 65px rgba(0,0,0,.55),0 0 25px rgba(212,175,55,.12)}.quick-card .qi{font-size:42px;display:block;margin-bottom:10px}.quick-card h3{color:#e7c95f;margin:5px 0}.quick-card p{color:#aaa;font-size:13px;line-height:1.6;margin:0}.quick-card .shine{position:absolute;inset:0;border-radius:24px;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.12) 50%,transparent 70%);transform:translateX(-110%);animation:cardShine 4s ease-in-out infinite;pointer-events:none}@keyframes cardShine{55%,100%{transform:translateX(110%)}}
+@media(max-width:700px){.quick-3d{grid-template-columns:1fr}.paper-stage{min-height:235px}}
+</style><style>
+/* FINAL 3-NAV + PAPER PLANE + 3D CAR + SRGI WATERMARK */
+.srgi-watermark{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:30;width:74px;height:74px;opacity:.075;pointer-events:none;filter:drop-shadow(0 0 18px #d4af37);animation:srgiFloat 5s ease-in-out infinite, srgiSpin 18s linear infinite}.srgi-watermark img{width:100%;height:100%;object-fit:contain}.srgi-watermark::after{content:'SRGI';position:absolute;inset:auto 0 -15px;text-align:center;color:#d4af37;font-size:9px;letter-spacing:3px;font-weight:700}@keyframes srgiFloat{0%,100%{margin-top:-10px}50%{margin-top:10px}}@keyframes srgiSpin{0%{rotate:0deg}100%{rotate:360deg}}
+.final-nav{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:9998;width:min(94%,430px);display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:8px;background:rgba(7,7,10,.88);backdrop-filter:blur(18px);border:1px solid rgba(212,175,55,.5);border-radius:24px;box-shadow:0 15px 50px rgba(0,0,0,.7),0 0 25px rgba(212,175,55,.08)}
+.final-nav a{position:relative;overflow:hidden;text-decoration:none;color:#bdbdbd;text-align:center;padding:9px 5px;border-radius:17px;font-weight:700;font-size:11px;transition:.3s;transform:perspective(500px) rotateX(5deg)}.final-nav a b{display:block;font-size:22px;line-height:1.1;margin-bottom:2px}.final-nav a:hover,.final-nav a.active{color:#fff;background:linear-gradient(145deg,#2a220e,#111);border:1px solid rgba(212,175,55,.45);transform:perspective(500px) translateY(-4px) rotateX(0);box-shadow:0 8px 25px rgba(212,175,55,.14)}
+.final-nav a::after{content:'';position:absolute;top:-80%;left:-50%;width:35%;height:260%;background:rgba(255,255,255,.12);transform:rotate(25deg);animation:navShine 5s linear infinite;pointer-events:none}@keyframes navShine{0%,55%{left:-60%}80%,100%{left:130%}}
+body{padding-bottom:95px}
+.car-track{position:fixed;left:0;right:0;bottom:78px;height:42px;z-index:25;pointer-events:none;overflow:hidden;opacity:.72}.car-road{position:absolute;left:0;right:0;bottom:7px;height:2px;background:linear-gradient(90deg,transparent,#d4af37,transparent);box-shadow:0 0 12px #d4af37}.car-road::after{content:'';position:absolute;inset:-5px 0;background:repeating-linear-gradient(90deg,transparent 0 22px,#d4af37 22px 42px,transparent 42px 68px);opacity:.25;animation:roadMove .7s linear infinite}@keyframes roadMove{to{transform:translateX(-68px)}}
+.car{position:absolute;bottom:10px;left:-90px;width:74px;height:30px;filter:drop-shadow(0 5px 8px rgba(0,0,0,.8));animation:driveCar 11s linear infinite}.car-body{position:absolute;left:5px;bottom:5px;width:63px;height:18px;border-radius:7px 12px 5px 5px;background:linear-gradient(145deg,#d4af37,#7c5b12);border:1px solid #f2d36c;box-shadow:inset 0 2px 3px #fff5}.car-roof{position:absolute;left:18px;bottom:20px;width:33px;height:14px;border-radius:10px 10px 2px 2px;background:linear-gradient(135deg,#333,#999);border:1px solid #d4af37}.wheel{position:absolute;bottom:0;width:13px;height:13px;border-radius:50%;background:#080808;border:2px solid #777;box-shadow:0 0 5px #000}.wheel.w1{left:12px}.wheel.w2{right:11px}@keyframes driveCar{0%{left:-90px;transform:translateY(0) rotate(0)}45%{transform:translateY(-3px) rotate(-1deg)}50%{transform:translateY(0) rotate(0)}100%{left:calc(100% + 90px);transform:translateY(-1px) rotate(1deg)}}
+/* more physical plane motion */.paper-plane-btn{animation:planeFlight 4.6s cubic-bezier(.45,.05,.55,.95) infinite;transform-origin:50% 50%}.paper-stage{overflow:hidden}.paper-stage::before{animation:planeTrail 4.6s linear infinite}@keyframes planeFlight{0%,100%{transform:translate3d(-12px,8px,0) rotate(-5deg)}25%{transform:translate3d(5px,-12px,35px) rotate(3deg)}50%{transform:translate3d(22px,2px,65px) rotate(8deg)}75%{transform:translate3d(3px,12px,20px) rotate(-2deg)}}@keyframes planeTrail{0%{left:12%;opacity:.15}50%{left:78%;opacity:1}100%{left:12%;opacity:.15}}
+@media(max-width:480px){.srgi-watermark{width:55px;height:55px;right:8px}.final-nav{bottom:8px}.final-nav a{padding:8px 3px;font-size:10px}.final-nav a b{font-size:20px}.car-track{bottom:66px}}
+</style><style>
+/* FINAL SIMPLE NAV: HOME + CAMERA + PROFILE */
+.final-nav-two{display:grid!important;grid-template-columns:1fr 1.15fr 1fr;align-items:center;gap:8px;width:min(94%,460px);padding:8px;background:rgba(8,8,8,.94);border:1px solid rgba(212,175,55,.7);border-radius:24px;box-shadow:0 10px 35px rgba(0,0,0,.55),0 0 28px rgba(212,175,55,.16);backdrop-filter:blur(18px)}
+.final-nav-two a,.final-nav-two button{border:0;background:transparent;color:#aaa;text-decoration:none;text-align:center;cursor:pointer;padding:8px 5px;border-radius:18px;font-family:Poppins,sans-serif;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:48px;transition:.25s}
+.final-nav-two a:hover,.final-nav-two a.active,.final-nav-two button:hover{color:#fff;background:rgba(212,175,55,.12);transform:translateY(-2px)}
+.final-nav-two b{font-size:22px;line-height:1;color:#e1bd58;text-shadow:0 0 12px rgba(212,175,55,.55)}
+.final-nav-two span{font-size:10px;margin-top:4px;font-weight:700;letter-spacing:.5px}
+.camera-nav{transform:translateY(-8px) scale(1.06);background:linear-gradient(145deg,#e4c66b,#8d6815)!important;color:#090909!important;border:1px solid #ffe99a!important;box-shadow:0 0 22px rgba(212,175,55,.55),inset 0 1px rgba(255,255,255,.5)}
+.camera-nav b{color:#111!important;text-shadow:none}.camera-nav span{color:#111}.camera-nav input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.student-register-card,.rating-home-card{background:linear-gradient(145deg,#171717,#0a0a0a);border:1px solid rgba(212,175,55,.35);border-radius:24px;padding:24px;box-shadow:0 12px 35px rgba(0,0,0,.25);transform-style:preserve-3d;transition:.3s}
+.student-register-card:hover,.rating-home-card:hover{transform:perspective(900px) rotateX(2deg) rotateY(-2deg) translateY(-4px);box-shadow:0 18px 45px rgba(0,0,0,.38),0 0 25px rgba(212,175,55,.12)}
+.home-tools{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:25px auto;max-width:1000px}.home-tools input,.home-tools textarea{width:100%;margin:7px 0 12px;padding:12px;border-radius:12px;border:1px solid #444;background:#111;color:#fff;outline:none}.home-tools input:focus,.home-tools textarea:focus{border-color:#d4af37}.stars-home{display:flex;justify-content:center;gap:5px;margin:15px 0}.home-star{font-size:30px;background:none;border:0;color:#555;cursor:pointer}.home-star.on{color:#e1bd58;text-shadow:0 0 15px #d4af37}.thanks{padding:75px 18px 130px;text-align:center}.thanks h2{font-family:Cinzel,serif;color:#e1bd58;font-size:clamp(30px,6vw,55px);margin:0 0 12px}.thanks p{color:#aaa}.profile-page-active{display:block!important}
+@media(max-width:650px){.home-tools{grid-template-columns:1fr}.final-nav-two{bottom:8px}.final-nav-two b{font-size:20px}.camera-nav{transform:translateY(-6px) scale(1.03)}}
+</style>
+<style id="final-premium-theme-v2">
+:root{--gold:#d4af37;--gold2:#f2d477;--ink:#07080c;--panel:#10131a;--panel2:#0c0f15;--text:#f5f2e8;--muted:#a9a9ad}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(circle at 50% 0%,#171923 0%,#090a0f 42%,#050507 100%);color:var(--text)}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(120deg,transparent 0%,rgba(212,175,55,.025) 45%,transparent 70%);animation:ambientSweep 12s linear infinite}
+@keyframes ambientSweep{0%{transform:translateX(-18%)}50%{transform:translateX(18%)}100%{transform:translateX(-18%)}}
+.card,.form-card,.mag-card,.mini-card,.qr-box,.student-register-card,.rating-home-card,.memory,.feature-card,.camp-card,.home-tools>div{border-color:rgba(212,175,55,.62)!important;box-shadow:0 10px 35px rgba(0,0,0,.28),0 0 0 1px rgba(212,175,55,.05) inset;position:relative;overflow:hidden}
+.card::after,.form-card::after,.mag-card::after,.mini-card::after,.qr-box::after,.student-register-card::after,.rating-home-card::after,.memory::after,.feature-card::after,.camp-card::after{content:"";position:absolute;inset:0;border:1px solid rgba(212,175,55,.18);border-radius:inherit;pointer-events:none;animation:goldBorder 3.8s ease-in-out infinite}
+@keyframes goldBorder{0%,100%{opacity:.25;box-shadow:0 0 0 rgba(212,175,55,0)}50%{opacity:.9;box-shadow:0 0 22px rgba(212,175,55,.10)}}
+.title,.gold{color:var(--gold2)}
+.btn{border:1px solid rgba(212,175,55,.85)!important;box-shadow:0 0 18px rgba(212,175,55,.08);transition:.3s}
+.btn:hover{box-shadow:0 0 28px rgba(212,175,55,.22);transform:translateY(-2px)}
+input,textarea,select{border-color:rgba(212,175,55,.38)!important;background:#0b0e14!important}
+input:focus,textarea:focus,select:focus{border-color:var(--gold)!important;box-shadow:0 0 0 3px rgba(212,175,55,.08)}
+.memory img{width:100%;height:auto;min-height:240px;max-height:620px;object-fit:cover;object-position:center;display:block;background:#08090d;image-rendering:auto;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform:translateZ(0);}
+.memory{break-inside:avoid}
+.memory-body{background:linear-gradient(180deg,rgba(10,11,15,.96),rgba(7,8,11,.99))}
+.final-nav-two{border-color:rgba(212,175,55,.95)!important;box-shadow:0 12px 45px rgba(0,0,0,.72),0 0 25px rgba(212,175,55,.16);animation:navGlow 3.5s ease-in-out infinite}
+@keyframes navGlow{0%,100%{box-shadow:0 12px 45px rgba(0,0,0,.72),0 0 14px rgba(212,175,55,.08)}50%{box-shadow:0 12px 45px rgba(0,0,0,.72),0 0 30px rgba(212,175,55,.20)}}
+.camera-nav{border:1px solid rgba(212,175,55,.8)!important;background:linear-gradient(145deg,rgba(212,175,55,.15),rgba(20,20,20,.6))!important}
+body.profile-mode main#home>section:not(#profile){display:none!important}
+body.profile-mode main#home{display:block!important;min-height:80vh}
+body.profile-mode #profile{display:block!important;min-height:78vh;padding-bottom:150px}
+body:not(.profile-mode) #profile{display:none!important}
+.profile-dashboard{max-width:1050px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.profile-panel{padding:24px;border:1px solid rgba(212,175,55,.62);border-radius:22px;background:linear-gradient(145deg,#12151d,#090b10);animation:goldBorder 3.8s ease-in-out infinite}
+.profile-panel h3{margin-top:0;color:var(--gold2)}
+.registered-list{display:grid;gap:12px;margin-top:14px}
+.registered-item{padding:14px;border-radius:16px;border:1px solid rgba(212,175,55,.38);background:#0b0e14}
+.registered-item b{color:#f1d980}.registered-item small{color:#aaa;display:block;margin-top:4px}
+.long-copy{max-width:920px;margin:0 auto;color:#c6c6c8;line-height:1.9;font-size:15px}
+.long-copy strong{color:#f0d77c}
+.info-strip{max-width:1000px;margin:25px auto;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.info-strip .mini-stat{padding:18px;text-align:center;border:1px solid rgba(212,175,55,.42);border-radius:18px;background:linear-gradient(145deg,#11141b,#090b10)}
+.mini-stat b{display:block;font-size:26px;color:var(--gold2);margin-bottom:5px}
+@media(max-width:700px){.profile-dashboard,.info-strip{grid-template-columns:1fr}.long-copy{font-size:14px}}
+</style>
+
+<style id="performance-optimization">
+/* Smooth mobile performance: preserve the premium look without heavy continuous effects */
+*{animation-timing-function:ease-in-out!important}
+@media (max-width:600px){
+  .welcome-grid{animation-duration:18s!important}
+  .welcome-orb{animation-duration:14s!important}
+  .golden-border,.gold-border,.animated-border{animation-duration:4.5s!important}
+  .car{animation-duration:18s!important}
+  .paper-plane{animation-duration:9s!important}
+  .card:hover{transform:none!important}
+  img{image-rendering:auto;max-width:100%;}
+}
+</style>
+</head><body>
+<div class="srgi-watermark" aria-hidden="true"><img src="https://i.ibb.co/1f6FFNtL/logo.png" alt="SRGI"></div>
+<div class="car-track" aria-hidden="true"><div class="car-road"></div><div class="car"><div class="car-roof"></div><div class="car-body"></div><i class="wheel w1"></i><i class="wheel w2"></i></div></div>
+<nav class="final-nav final-nav-two" aria-label="College Memories navigation">
+  <a href="#home" id="homeNav"><b>⌂</b><span>Home</span></a>
+  <button type="button" id="cameraNav" class="camera-nav"><b>📷</b><span>Camera</span><input id="navCameraInput" type="file" accept="image/*" capture="environment" aria-label="Open camera"></button>
+  <a href="#profile" id="profileNav"><b>👤</b><span>Profile</span></a>
+</nav>
+
+
+
+<div class="welcome" id="welcome"><div class="welcome-orb orb1"></div><div class="welcome-orb orb2"></div><div class="welcome-grid"></div><div class="welcome-box"><div class="tech-brand"><img src="https://i.ibb.co/Q7vn5Fk4/IMG-20260910-060755.jpg" alt="Tech Spark Logo"><span>TECH SPARK</span></div><img class="welcome-logo" src="https://i.ibb.co/1f6FFNtL/logo.png"><div class="script">Welcome to</div><h1>COLLEGE <span class="gold">MEMORIES</span></h1><p>Where photographs become stories, friendships become memories, and every college moment gets a place to live forever.</p><div class="welcome-pills"><span>✨ Memories</span><span>🚀 Innovation</span><span>💡 Ideas</span></div><div class="paper-stage" aria-label="Open College Memories">
+<button class="paper-plane-btn" id="paperMemoryBtn" type="button" aria-label="Open Memories">
+<span class="paper-plane"><i class="wing"></i><i class="wing2"></i><i class="crease"></i><i class="gold-edge"></i></span>
+</button><div class="paper-caption">✈ TAP THE PAPER PLANE • OPEN MEMORIES</div>
+</div><button class="btn" id="enterBtn" type="button">OPEN COLLEGE MEMORIES</button><div class="scroll-hint">Tap the flying paper plane to begin ↓</div></div></div>
+</div>
+<header><div class="nav"><div class="nav-brand"><img src="https://i.ibb.co/Q7vn5Fk4/IMG-20260910-060755.jpg" alt="Tech Spark"><span>TECH SPARK</span></div><img class="logo" src="https://i.ibb.co/1f6FFNtL/logo.png"><button class="music" id="musicBtn">♫</button></div></header>
+<main id="home">
+<section class="hero" id="eventHero"><div><div class="hero-badge">COLLEGE MEMORIES • 2026</div><div class="script">Celebrating</div><h1>ENGINEER'S DAY</h1><p>15 September 2026 • A special celebration of ideas, innovation and engineering spirit. After the celebration, this space becomes the permanent College Memories platform.</p><div class="countdown"><div class="time"><b id="days">0</b><small>Days</small></div><div class="time"><b id="hours">0</b><small>Hours</small></div><div class="time"><b id="minutes">0</b><small>Minutes</small></div><div class="time"><b id="seconds">0</b><small>Seconds</small></div></div><a class="btn" href="#memories">✨ Share Your Memory</a></div></section>
+
+<section class="long-section"><h2 class="title">A Message from the Chairman</h2><div class="grid"><div class="card"><img class="chairman" src="https://i.ibb.co/vC97s3w3/chairman.jpg" alt="Chairman"></div><div class="message-card"><h3>Chairman's Message</h3><p>Engineering is not only about machines, circuits, software or structures. It is about the courage to ask questions, the discipline to learn, and the imagination to turn a challenge into an opportunity.</p><p>On this special day, I encourage every student to keep learning beyond the classroom, respect the power of knowledge, work with integrity and use technology for a meaningful purpose.</p><p>May your college journey be filled with curiosity, creativity, teamwork and memories that you will proudly carry into the future.</p><div class="signature">With best wishes • Keep learning, keep creating.</div></div></div></section>
+
+<section><h2 class="title">A Tribute to Engineering</h2><p class="intro-text">Every bridge, application, machine, algorithm and invention begins with a simple thought: <span class="gold">“Can we make it better?”</span> Engineers turn that question into action.</p><div class="quote">“Engineers don't just build machines. They build possibilities, shape dreams and create the future.”</div></section>
+
+<section class="long-section"><h2 class="title">Lines for Engineer's Day</h2><div class="line-wall"><div class="day-line"><span>Dream. Design. Build.</span>Every great invention begins with a dream and grows through determination.</div><div class="day-line"><span>Think beyond limits.</span>An engineer sees a problem not as an ending, but as the beginning of a solution.</div><div class="day-line"><span>Ideas create tomorrow.</span>Technology changes rapidly, but creativity and curiosity remain timeless.</div><div class="day-line"><span>Learn. Fail. Improve.</span>Every mistake is a lesson that can lead to a smarter and stronger solution.</div><div class="day-line"><span>Build for humanity.</span>The finest engineering is not only clever; it makes life safer, easier and better.</div><div class="day-line"><span>Be the future.</span>Today’s students are tomorrow’s innovators, developers, designers and problem-solvers.</div><div class="day-line"><span>Innovation needs courage.</span>Have the courage to ask why, the patience to test, and the confidence to try again.</div><div class="day-line"><span>Your idea matters.</span>Never underestimate a small idea when it is supported by hard work and purpose.</div></div></section>
+
+<section><h2 class="title">Engineering Departments</h2><div class="depts"><div class="dept"><div class="icon">💻</div><b>CSE</b><p>Code the future.</p></div><div class="dept"><div class="icon">⚡</div><b>ECE</b><p>Connect possibilities.</p></div><div class="dept"><div class="icon">⚙️</div><b>ME</b><p>Build with precision.</p></div><div class="dept"><div class="icon">🏗️</div><b>CE</b><p>Shape the world.</p></div></div></section>
+
+<section><h2 class="title">From Classroom to Future</h2><div class="timeline"><div class="card"><h3 class="gold">01 • Learn</h3><p>Concepts become skills when curiosity meets consistent practice.</p></div><div class="card"><h3 class="gold">02 • Create</h3><p>Projects transform knowledge into something useful, visible and real.</p></div><div class="card"><h3 class="gold">03 • Impact</h3><p>The ultimate goal is to use engineering to solve meaningful problems.</p></div></div></section>
+
+<section><h2 class="title">SRGI Excellence</h2><div class="stats"><div class="stat"><strong>∞</strong>Innovation</div><div class="stat"><strong>100%</strong>Passion</div><div class="stat"><strong>24×7</strong>Ideas</div><div class="stat"><strong>1</strong>Future</div></div></section><section><div class="card" style="text-align:center"><div class="mag-icon">📖</div><h2 class="title" style="font-size:30px;margin:10px 0">Explore SRGI Magazine</h2><p class="intro-text">History, academics, facilities, student life, achievements and events.</p><button class="btn" onclick="window.showCollegeTab('magazine')">Open Magazine Highlights</button></div></section>
+<section><h2 class="title">Our Campus • 3D Experience</h2><p class="intro-text">Engineering Day ko ek premium 3D campus experience ke saath feel karo — campus image, college logo aur Tech Spark identity ek interactive card mein.</p><div class="campus-3d-wrap"><div class="campus-3d"><div class="campus-frame"><img class="campus" src="https://i.ibb.co/chsyV20m/campus.jpg" alt="College campus"><img class="campus-logo-3d" src="https://i.ibb.co/1f6FFNtL/logo.png" alt="Campus logo"><div class="campus-badge-3d">ENGINEERING DAY • 2026</div></div><div class="campus-floor"></div></div></div><p class="intro-text" style="margin-top:22px">A campus is more than buildings. It is classrooms, corridors, celebrations, friendships, projects, laughter and countless little moments that become our college memories.</p></section>
+
+<section id="memories" class="long-section"><h2 class="title">✨ Memories & Thoughts Wall</h2><div style="text-align:center;margin:-12px 0 20px"><button class="btn secondary" id="refreshMemories">↻ Refresh Shared Memories</button></div><div class="memory-top"><p style="color:#bbb">Upload a photo, add your name and department, and write the memory behind it. Memories are stored online and can appear for everyone.</p><button class="btn" id="showMemoryForm">✨ + ADD YOUR MEMORY</button></div><div class="memory-form" id="memoryForm"><h3 class="gold">Create Your Memory</h3><label>Your Name</label><input id="memoryName" placeholder="Enter your name"><label>Department / Branch</label><input id="memoryDepartment" placeholder="e.g. B.Tech CSE"><label>Photo</label><label class="file-label">📷 Choose Photo<input id="memoryPhoto" type="file" accept="image/*"></label><img id="photoPreview" class="preview"><label>Memory / Thought</label><textarea id="memoryMessage" placeholder="Write your college memory..."></textarea><div class="form-actions"><button class="btn" id="publishMemory">Publish Memory</button><button class="btn secondary" id="cancelMemory">Cancel</button></div><p id="uploadStatus" style="color:#bbb"></p><p id="connectionStatus" style="color:#777;font-size:12px"></p></div><div class="memories" id="memoryList"><div class="empty">Shared memories will appear here. ✨</div></div></section>
+
+<section class="wish long-section"><h2 class="title">A Special Wish for Every Engineer</h2><p class="intro-text">May every student discover a problem worth solving, a skill worth mastering, and a dream worth building.</p><input id="wishName" style="max-width:500px;margin-top:25px" placeholder="Enter your name"><br><button class="btn" id="openWish">Open My Letter 💌</button><div class="letter" id="letter"><h2 class="gold" id="letterTitle">Happy Engineer's Day!</h2><p>May your ideas become inventions, your challenges become achievements, and your dreams become solutions that make the world better.</p><p>May you always have the courage to start, the patience to improve, and the heart to create something meaningful.</p><p>Keep learning. Keep building. Keep creating. And keep making memories along the way.</p></div></section>
+
+<section class="nav-page" id="food">
+<h2 class="title">🍽️ Campus Food & Stay</h2>
+<p class="intro-text">Restaurant, Hotel aur Canteen — quick access.</p>
+<div class="food-grid">
+  <div class="mini-card"><div style="font-size:42px">🍴</div><h3>Restaurant</h3><p>Popular meals & menu</p><button class="btn food-menu" data-menu="restaurant">View Menu</button></div>
+  <div class="mini-card"><div style="font-size:42px">🏨</div><h3>Hotel</h3><p>Guest stay & food</p><button class="btn food-menu" data-menu="hotel">View Menu</button></div>
+  <div class="mini-card"><div style="font-size:42px">☕</div><h3>Canteen</h3><p>Daily snacks & meals</p><button class="btn food-menu" data-menu="canteen">View Menu</button></div>
+</div>
+<div class="qr-box">
+<h3>📷 Scan Menu QR</h3><p>Camera permission allow karo. QR scan hote hi menu direct open hoga.</p>
+<button class="btn" id="startQr">📷 Start Camera Scanner</button>
+<div id="qrReader" style="width:100%;max-width:420px;margin:15px auto;display:none"></div>
+<input class="qr-input" id="menuUrl" placeholder="Ya menu link paste karein">
+<button class="btn secondary" id="openMenu">Open Menu Link</button>
+<div id="menuPanel" class="mini-card" style="display:none;text-align:left;margin-top:16px"></div>
+</div>
+</section>
+
+<section class="nav-page" id="games">
+<h2 class="title">🎮 Weekend Games</h2><p class="intro-text">Tap karo aur game actually play karo.</p>
+<div class="games-grid">
+<div class="mini-card"><h3>🧠 CSE Quiz</h3><p id="quizQ">Ready?</p><button class="btn quiz-opt" data-a="A">Start Quiz</button><button class="btn quiz-opt" data-a="B" style="display:none">Option B</button><button class="btn quiz-opt" data-a="C" style="display:none">Option C</button><p id="quizResult"></p></div>
+<div class="mini-card"><h3>✊ Rock Paper Scissors</h3><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn rps" data-v="Rock">✊ Rock</button><button class="btn rps" data-v="Paper">✋ Paper</button><button class="btn rps" data-v="Scissors">✌️ Scissors</button></div><p id="rpsResult"></p><b id="rpsScore">You 0 — 0 Computer</b></div>
+<div class="mini-card"><h3>🎯 Lucky Number</h3><p>1–100 mein number guess karo.</p><input class="qr-input" id="luckyGuess" type="number" min="1" max="100" placeholder="Your guess"><button class="btn" id="luckyBtn">Try</button><p id="luckyResult"></p></div>
+</div></section>
+
+<section class="nav-page" id="campusDirectory">
+<h2 class="title">🏫 SRGI Campus</h2>
+<p class="intro-text">College Magazine ke according SRGI ka verified campus & facilities overview. Jo details magazine mein nahi hain, unhe yahan invent nahi kiya gaya hai.</p>
+<div class="mag-grid" style="margin-top:20px">
+<article class="mag-card"><div class="mag-icon">🌍</div><h3>World Class Campus</h3><p style="color:#ccc;line-height:1.75">Magazine ke mutabik SRGI ka campus 60+ acres mein spread hai aur 4000+ students ko daily educate karne ki capacity rakhta hai.</p></article>
+<article class="mag-card"><div class="mag-icon">🎓</div><h3>Academic Ecosystem</h3><p style="color:#ccc;line-height:1.75">AC classrooms, well-equipped laboratories, AC & non-AC hostels with mess, online lectures, well-stocked library, hi-tech computer lab, Wi-Fi campus aur AC/non-AC buses magazine mein highlighted hain.</p></article>
+<article class="mag-card"><div class="mag-icon">📚</div><h3>Library</h3><p style="color:#ccc;line-height:1.75">Magazine 60,000+ books & e-books, digital resources, e-journals, conference proceedings, reports aur reference services ka mention karti hai.</p></article>
+<article class="mag-card"><div class="mag-icon">⚽</div><h3>Sports & Health</h3><p style="color:#ccc;line-height:1.75">Dedicated sports stadium, state/zonal level participation aur 24×7 healthcare support magazine mein described hai.</p></article>
+<article class="mag-card"><div class="mag-icon">📶</div><h3>Safety & Connectivity</h3><p style="color:#ccc;line-height:1.75">Free Wi-Fi, 24×7 CCTV surveillance aur round-the-clock security ka mention magazine mein hai.</p></article>
+<article class="mag-card"><div class="mag-icon">🎭</div><h3>Student Clubs & Events</h3><p style="color:#ccc;line-height:1.75">Sports Club, Cultural Club, Technical Club ke saath Srijan, Shaurya, Technovation & Prabandhan aur Creators Connect jaise activities featured hain.</p></article>
+</div>
+<div class="map-box" style="margin-top:24px"><div style="font-size:48px">🗺️</div><h3 class="gold">SR Group of Institutions</h3><p>NH-24, Sitapur Road, BKT, Lucknow</p><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn" id="openCampusMap">Open Google Maps</button><button class="btn secondary" id="getDirections">Get Directions</button><button class="btn secondary" onclick="window.showCollegeTab('magazine')">📖 Full Magazine Highlights</button></div><p class="notice">Magazine exact internal block coordinates provide nahi karti, isliye app exact block location claim nahi karta.</p></div>
+<section style="padding:35px 0 10px"><h3 class="title" style="font-size:28px">📍 My Classroom</h3><div class="form-card"><input class="qr-input" id="myDept" placeholder="Department / Branch (e.g. CSE)"><input class="qr-input" id="myClassroom" placeholder="Classroom / Room"><button class="btn" id="saveClassroom">Save My Classroom</button><p id="classroomSaved" class="notice"></p></div></section>
+</section><section class="nav-page" id="magazine"><h2 class="title">📖 SRGI College Magazine</h2><p class="intro-text">Supplied SRGI magazine se verified highlights — searchable format mein.</p><div class="searchbar"><input id="magSearch" placeholder="Search CSE, library, hostel, placement, sports..."></div><div id="magGrid" class="mag-grid"></div></section>
+
+<section class="long-section" id="story-expanded">
+  <h2 class="title">✨ The Story Behind College Memories</h2>
+  <p class="long-copy">College life sirf classrooms, assignments aur examinations ka naam nahi hai. Yeh woh phase hai jahan ek simple classroom conversation friendship ban sakti hai, ek project future career ka direction de sakta hai, aur ek ordinary campus day kal ki sabse special memory ban sakta hai. <strong>College Memories</strong> ka purpose isi journey ko ek shared digital space dena hai—jahan students apni photographs, thoughts, achievements aur moments ko preserve kar saken.</p>
+  <p class="long-copy" style="margin-top:14px">Engineer’s Day 2026 ke occasion par yeh platform ideas, innovation aur student creativity ko celebrate karta hai. Har uploaded memory ek individual story nahi, balki college community ke collective journey ka ek small chapter hai.</p>
+</section>
+
+<section class="long-section" id="srgifocus">
+  <h2 class="title">🏛️ SRGI — A Journey of Learning & Innovation</h2>
+  <p class="long-copy">SRGI ke official magazine ke mutabik institute ki journey <strong>2009</strong> mein S R Institute of Management and Technology ke establishment se start hui. Magazine academics, technology, professional development, teamwork, integrity aur holistic learning par focus ko highlight karta hai.</p>
+  <div class="info-strip">
+    <div class="mini-stat"><b>2009</b>Journey began</div>
+    <div class="mini-stat"><b>60+</b>Acres campus</div>
+    <div class="mini-stat"><b>60,000+</b>Books / e-books</div>
+    <div class="mini-stat"><b>24×7</b>Support & security</div>
+  </div>
+  <p class="long-copy">Campus facilities mein AC classrooms, equipped laboratories, hostels and mess, online lectures, library, hi-tech computer lab, Wi-Fi aur buses jaise resources magazine mein described hain. Student life ke liye sports, cultural aur technical activities bhi highlighted hain.</p>
+</section>
+
+<section class="long-section" id="engineering-day-message">
+  <h2 class="title">⚙️ Why Engineer’s Day Matters</h2>
+  <div class="feature-grid">
+    <article class="feature-card"><div class="bigicon">💡</div><h3>Think Different</h3><p style="color:#bbb;line-height:1.8">Engineering ka first step ek better question poochna hai. Curiosity ko habit banao aur everyday problems ko opportunities ki tarah dekho.</p></article>
+    <article class="feature-card"><div class="bigicon">🛠️</div><h3>Build & Improve</h3><p style="color:#bbb;line-height:1.8">First attempt perfect hona zaroori nahi. Prototype banao, test karo, mistakes se seekho aur next version ko stronger banao.</p></article>
+    <article class="feature-card"><div class="bigicon">🚀</div><h3>Create Impact</h3><p style="color:#bbb;line-height:1.8">Knowledge ka real value tab hai jab woh people, campus aur society ke liye useful solutions create kare.</p></article>
+  </div>
+</section>
+
+<section class="long-section" id="student-journey">
+  <h2 class="title">🎓 From Student Life to Future</h2>
+  <p class="long-copy">Ek engineering student ki journey mein lectures, labs, practicals, clubs, competitions, presentations, friendships aur projects sab milkar experience create karte hain. Aaj ka small experiment kal ka final-year project ban sakta hai; aaj ki team kal ka professional network ban sakti hai.</p>
+  <div class="feature-grid" style="margin-top:22px">
+    <article class="feature-card"><div class="bigicon">📚</div><h3>Learn</h3><p style="color:#bbb;line-height:1.8">Concepts ko samjho, notes se aage jaakar practical examples aur projects ke through knowledge apply karo.</p></article>
+    <article class="feature-card"><div class="bigicon">🤝</div><h3>Connect</h3><p style="color:#bbb;line-height:1.8">Peers, mentors aur teammates ke saath ideas share karo. Collaboration engineering ka essential part hai.</p></article>
+    <article class="feature-card"><div class="bigicon">🌟</div><h3>Remember</h3><p style="color:#bbb;line-height:1.8">Important moments ko save karo—kyunki graduation ke baad wahi photographs aur stories campus journey ko alive rakhti hain.</p></article>
+  </div>
+</section>
+
+<section class="long-section" id="studentAndRatingHome">
+  <h2 class="title">🎓 Student Registration & ⭐ Rating</h2>
+  <p class="intro-text">Students Registration aur feedback ko alag rakha gaya hai. Camera se directly memory photo bhi add kar sakte hain.</p>
+  <div class="home-tools">
+    <div class="student-register-card">
+      <h3 class="gold">🎓 Student Registration</h3>
+      <p style="color:#aaa">Apni student details save karke College Memories community join karein.</p>
+      <input id="homeStudentName" placeholder="Full Name">
+      <input id="homeStudentRoll" placeholder="Roll Number">
+      <input id="homeStudentBranch" placeholder="Branch / Department">
+      <input id="homeStudentYear" placeholder="Year / Semester">
+      <button class="btn" id="homeStudentRegister" type="button">Register Student</button>
+      <p id="homeStudentStatus" style="color:#e1bd58"></p>
+    </div>
+    <div class="rating-home-card">
+      <h3 class="gold">⭐ Rate College Memories</h3>
+      <p style="color:#aaa">Aapka feedback is project ko better banane mein help karega.</p>
+      <div class="stars-home" id="homeStars">
+        <button class="home-star" data-rating="1">★</button><button class="home-star" data-rating="2">★</button><button class="home-star" data-rating="3">★</button><button class="home-star" data-rating="4">★</button><button class="home-star" data-rating="5">★</button>
+      </div>
+      <textarea id="homeRatingComment" rows="4" placeholder="Write your feedback..."></textarea>
+      <button class="btn" id="homeRatingSubmit" type="button">Submit Rating</button>
+      <p id="homeRatingStatus" style="color:#e1bd58"></p>
+    </div>
+  </div>
+</section>
+<section class="nav-page" id="profile">
+<h2 class="title">👤 Your Profile</h2><p class="intro-text">Apna student profile manage karo. Neeche SRGI Magazine se verified institute snapshot bhi diya gaya hai.</p><div class="mag-grid" style="margin-bottom:22px"><article class="mag-card"><div class="mag-icon">🏛️</div><h3>SRGI • Since 2009</h3><p style="color:#ccc;line-height:1.75">Magazine ke according SR Group ki journey 2009 mein S R Institute of Management and Technology ke establishment se start hui.</p></article><article class="mag-card"><div class="mag-icon">💡</div><h3>Vision & Values</h3><p style="color:#ccc;line-height:1.75">Quality education, innovation, integrity, teamwork, ethical conduct aur holistic learning magazine mein emphasized hain.</p></article></div>
+<div class="profile-dashboard">
+  <div class="profile-panel">
+    <div id="avatarCircle" style="width:86px;height:86px;border-radius:50%;margin:0 auto 15px;display:flex;align-items:center;justify-content:center;font-size:38px;background:linear-gradient(135deg,#17130a,#3b2c0d);color:#fff;border:2px solid #d4af37">🎓</div>
+    <input class="qr-input" id="profileName" placeholder="Your Name">
+    <input class="qr-input" id="profileDept" placeholder="Department e.g. CSE">
+    <label style="display:block;margin:10px 0;text-align:left"><input type="checkbox" id="anonymousMode" checked> Chat mein mera naam hide rakho</label>
+    <button class="btn" id="saveProfile">Save Profile</button>
+    <div class="mini-card" id="profileCard" style="margin-top:14px">No profile saved yet.</div>
+  </div>
+  <div class="profile-panel">
+    <h3>🎓 Student Registration Profile</h3>
+    <p style="color:#aaa;line-height:1.7">Home page par registered student details yahan automatically dikhengi. Yeh information is device ke local storage mein save hoti hai.</p>
+    <div id="registeredStudentsList" class="registered-list"><div class="registered-item">No student registration found yet.</div></div>
+  </div>
+</div></section>
+
+<section class="nav-page" id="connect">
+<h2 class="title">🎓 Student Connect</h2>
+<p class="intro-text">IIT/NIT aur other colleges ke students se interest-based baat karo — real name dikhana zaroori nahi.</p>
+<div class="mini-card">
+<h3>🕶️ Anonymous Campus Chat</h3><p>Random display name use hoga. Personal phone/email share mat karo.</p>
+<select class="qr-input" id="chatTopic"><option>CSE & Coding</option><option>Placements</option><option>Engineering Projects</option><option>College Life</option><option>Startups</option></select>
+<div id="chatMessages" style="max-height:280px;overflow:auto;text-align:left;margin:12px 0"></div>
+<div style="display:flex;gap:8px"><input class="qr-input" id="chatInput" placeholder="Message..." style="margin:0"><button class="btn" id="sendChat">Send</button></div>
+<small id="chatStatus"></small>
+</div>
+<div class="mini-card" style="margin-top:15px"><h3>⭐ Campus Plus — ₹29</h3><p>Priority discussion rooms, project matching aur special weekend rooms.</p><button class="btn" id="premiumBtn">Join Premium</button><small style="display:block;margin-top:8px">Payment gateway connect karne ke baad live payment activate hoga.</small></div>
+</section>
+
+<section class="nav-page" id="more">
+<h2 class="title">✨ More</h2><div class="mini-card"><h3>🛡️ Safe Community</h3><p>Respectful conversations, no personal contact details, no impersonation.</p></div><div class="mini-card"><h3>📚 Project Match</h3><p>Apne skills ke basis par teammates discover karo.</p></div></section>
+
+<section class="nav-page app-page" id="studentLogin">
+  <div class="page-shell">
+    <div class="page-badge">🎓 STUDENT ACCESS</div>
+    <h2 class="title">Students Login</h2>
+    <p class="intro-text">Apni basic student details save karke College Memories experience continue karein.</p>
+    <div class="mini-card login-card">
+      <label>Student Name<input id="loginName" type="text" placeholder="Enter your name"></label>
+      <label>Roll Number<input id="loginRoll" type="text" placeholder="e.g. 23CSE101"></label>
+      <label>Department<select id="loginDept"><option value="">Select Department</option><option>CSE</option><option>ECE</option><option>ME</option><option>CE</option><option>AI & ML</option><option>Data Science</option><option>Other</option></select></label>
+      <button class="btn" id="studentLoginBtn" type="button">🎓 Login / Save Student</button>
+      <p id="loginStatus" class="notice"></p>
+    </div>
+    <div class="mini-card" id="studentWelcome" style="margin-top:18px;text-align:center;">Not logged in yet.</div>
+    <div class="long-copy">
+      <h3>Student Space</h3><p>Yeh section student identity ko is device par remember karta hai. Login ke baad profile aur memories sections ko easily use kiya ja sakta hai.</p>
+      <div class="info-grid"><div class="mini-card"><b>📸 Memories</b><p>College moments explore aur share karein.</p></div><div class="mini-card"><b>👤 Profile</b><p>Apni academic details save karein.</p></div><div class="mini-card"><b>⭐ Feedback</b><p>Experience ke end mein rating dein.</p></div></div>
+    </div>
+  </div>
+</section>
+<section class="nav-page app-page" id="ratingPage">
+  <div class="page-shell">
+    <div class="page-badge">⭐ YOUR FEEDBACK MATTERS</div>
+    <h2 class="title">Rating & Feedback</h2>
+    <p class="intro-text">College Memories ko rate karein aur apna honest feedback share karein.</p>
+    <div class="mini-card" style="text-align:center;">
+      <div id="pageStars" style="display:flex;justify-content:center;gap:4px;margin:18px 0;">
+        <button type="button" class="star page-star" data-rating="1">★</button><button type="button" class="star page-star" data-rating="2">★</button><button type="button" class="star page-star" data-rating="3">★</button><button type="button" class="star page-star" data-rating="4">★</button><button type="button" class="star page-star" data-rating="5">★</button>
+      </div>
+      <textarea id="pageRatingComment" maxlength="500" placeholder="Write your feedback..."></textarea>
+      <button type="button" class="btn" id="pageSubmitRating">⭐ Confirm Rating & Feedback</button>
+      <p id="pageRatingStatus" class="notice"></p>
+    </div>
+    <div class="info-grid">
+      <div class="mini-card"><h3>💡 Experience</h3><p>Design, memories, student profile aur overall usability ke baare mein batayein.</p></div>
+      <div class="mini-card"><h3>🚀 Suggestions</h3><p>Aapke suggestions future updates ko better banane mein help karenge.</p></div>
+    </div>
+  </div>
+</section>
+<section id="finalRatingSection" class="long-section" style="margin-top:30px;padding-bottom:150px;">
+  <div class="mini-card" style="max-width:650px;margin:auto;text-align:center;padding:28px;">
+    <div style="font-size:38px;margin-bottom:8px;">⭐</div>
+    <h2 class="title" style="margin-bottom:8px;">Rate College Memories</h2>
+    <p class="intro-text">Pura College Memories experience dekhne ke baad apni rating aur feedback share karein.</p>
+    <div id="finalStars" style="display:flex;justify-content:center;gap:5px;margin:18px 0;">
+      <button type="button" class="star final-star" data-rating="1">★</button>
+      <button type="button" class="star final-star" data-rating="2">★</button>
+      <button type="button" class="star final-star" data-rating="3">★</button>
+      <button type="button" class="star final-star" data-rating="4">★</button>
+      <button type="button" class="star final-star" data-rating="5">★</button>
+    </div>
+    <textarea id="finalRatingComment" maxlength="500" placeholder="Apna feedback likhiye (optional)..." style="width:100%;min-height:100px;box-sizing:border-box;border-radius:12px;padding:13px;margin:8px 0;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:inherit;"></textarea>
+    <button type="button" class="btn" id="finalSubmitRating">⭐ Confirm Rating & Feedback</button>
+    <p id="finalRatingStatus" class="notice" style="margin-top:12px;"></p>
+  </div>
+</section>
+
+</main>
+<div class="rating-overlay" id="ratingOverlay"><div class="rating-box"><h2 class="title" style="font-size:30px;margin-bottom:8px">⭐ Rate College Memories</h2><p class="intro-text">Aapka feedback app ko better banane mein help karega.</p><div class="stars"><button class="star" data-r="1">★</button><button class="star" data-r="2">★</button><button class="star" data-r="3">★</button><button class="star" data-r="4">★</button><button class="star" data-r="5">★</button></div><textarea id="ratingComment" maxlength="500" placeholder="Optional comment..."></textarea><div class="form-actions"><button class="btn" id="submitRating">Submit Rating</button><button class="btn secondary" id="closeRating">Not now</button></div><p id="ratingStatus" class="notice"></p></div></div><footer><p>College Memories • Connect • Remember • Inspire</p><div class="developed">Developed by <strong>TECH SPARK</strong></div></footer>
+<audio id="bgMusic" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=soft-flute-112211.mp3"></audio>
+<footer class="footer-tech"><img src="https://i.ibb.co/Q7vn5Fk4/IMG-20260910-060755.jpg" alt="Tech Spark Logo"><div class="brand">TECH SPARK</div><p>Ideas • Innovation • Memories</p><p class="creator">Created &amp; Designed by <strong>Devesh Tiwari</strong><br>B.Tech CSE • Tech Spark</p></footer>
+<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+<script>
+/* FINAL APP NAVIGATION — independent of Supabase */
+(function(){
+  const pages=['home','memories','campusDirectory','magazine','profile','food','games','connect','more'];
+  const homeSections=new Set(['home','memories']);
+  function nav(id){
+    if(!pages.includes(id)) id='home';
+    const home=document.getElementById('home');
+    if(home) home.style.display=homeSections.has(id)?'block':'none';
+    document.querySelectorAll('.nav-page').forEach(p=>p.classList.toggle('show',p.id===id));
+    document.querySelectorAll('.nav-item').forEach(a=>a.classList.toggle('active',(a.getAttribute('href')||'')==='#'+id));
+    window.scrollTo({top:0,behavior:'smooth'});
+    if(id==='memories'){ setTimeout(()=>document.getElementById('memories')?.scrollIntoView({behavior:'smooth',block:'start'}),180); }
+    if(id!=='food' && typeof window.stopQR==='function'){try{window.stopQR()}catch(e){}}
+    return false;
+  }
+  window.showCollegeTab=nav; window.goToTab=nav; window.openCollegePage=nav;
+  document.addEventListener('click',function(e){
+    const a=e.target.closest?.('.nav-item');
+    if(!a) return;
+    e.preventDefault(); e.stopPropagation();
+    nav((a.getAttribute('href')||'#home').slice(1));
+  },true);
+  document.addEventListener('DOMContentLoaded',()=>{
+    const initial=(location.hash||'#home').slice(1);
+    nav(pages.includes(initial)?initial:'home');
+  });
+})();
+</script>
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+// Supabase connection
+const SUPABASE_URL = "https://mkiattwqntanjrlhuvdl.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_Y311btQ1jUJmrQYCQmJUtA_6dpjsxxr";
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const ready = !SUPABASE_ANON_KEY.startsWith("PASTE_");
+const connectionStatus = document.getElementById("connectionStatus");
+if(connectionStatus){
+  connectionStatus.textContent = ready
+    ? "Supabase connected • Uploads are shared online"
+    : "Supabase key missing";
+}
+
+const $=id=>document.getElementById(id);
+const refreshMemories=$("refreshMemories");
+if(refreshMemories) refreshMemories.onclick=loadMemories;
+const welcome=$("welcome"),enterBtn=$("enterBtn"),music=$("bgMusic"),musicBtn=$("musicBtn"),days=$("days"),hours=$("hours"),minutes=$("minutes"),seconds=$("seconds"),memoryForm=$("memoryForm"),memoryPhoto=$("memoryPhoto"),photoPreview=$("photoPreview"),showMemoryForm=$("showMemoryForm"),cancelMemory=$("cancelMemory"),publishMemory=$("publishMemory"),memoryName=$("memoryName"),memoryDepartment=$("memoryDepartment"),memoryMessage=$("memoryMessage"),uploadStatus=$("uploadStatus"),memoryList=$("memoryList"),wishName=$("wishName"),openWish=$("openWish"),letter=$("letter"),letterTitle=$("letterTitle");
+
+enterBtn.onclick=()=>{welcome.classList.add("welcome-hide");enterBtn.disabled=true;setTimeout(()=>{welcome.style.display="none";document.body.style.overflow="auto"},900)};
+musicBtn.onclick=async()=>{try{if(music.paused){await music.play();musicBtn.textContent="🔊"}else{music.pause();musicBtn.textContent="♫"}}catch(e){alert("Music ke liye button dobara tap karein.")}};
+
+function tick(){let d=Math.max(0,new Date("September 15, 2026 00:00:00").getTime()-Date.now());days.textContent=Math.floor(d/86400000);d%=86400000;hours.textContent=Math.floor(d/3600000);d%=3600000;minutes.textContent=Math.floor(d/60000);d%=60000;seconds.textContent=Math.floor(d/1000)}
+tick();setInterval(tick,1000);
+
+const form=memoryForm,file=memoryPhoto,preview=photoPreview;
+showMemoryForm.onclick=()=>{form.classList.add("open");form.scrollIntoView({behavior:"smooth",block:"center"})};
+cancelMemory.onclick=()=>{form.classList.remove("open");reset()};
+file.onchange=()=>{const f=file.files[0];if(!f)return;if(f.size>8*1024*1024){alert("Photo 8MB se chhoti rakho.");file.value="";return}preview.src=URL.createObjectURL(f);preview.style.display="block"};
+function reset(){memoryName.value="";memoryDepartment.value="";memoryMessage.value="";file.value="";preview.style.display="none";uploadStatus.textContent=""}
+function esc(s){const d=document.createElement("div");d.textContent=s??"";return d.innerHTML}
+
+function render(a){
+ memoryList.innerHTML=a.length?a.map(m=>{
+   const imgUrl=m.photo_url || (m.storage_path ? SUPABASE_URL+"/storage/v1/object/public/memory-photos/"+encodeURIComponent(m.storage_path).replace(/%2F/g,"/") : "");
+   const hdUrl=imgUrl.includes('/storage/v1/object/public/memory-photos/') ? imgUrl.replace('/storage/v1/object/public/memory-photos/','/storage/v1/render/image/public/memory-photos/')+'?width=1800&quality=92' : imgUrl;
+   return `<article class="card memory"><img src="${esc(hdUrl)}" data-original="${esc(imgUrl)}" alt="Memory photo" loading="lazy" decoding="async" onerror="if(this.src!==this.dataset.original){this.src=this.dataset.original}else{this.style.display='none';this.nextElementSibling.style.paddingTop='24px'}"><div class="memory-body"><div class="memory-meta"><h3>${esc(m.name)}</h3><button class="like-btn" data-like="${esc(m.id)}">❤️ <span>${Number(m.likes||0)}</span></button></div><small>${esc(m.department||"Engineering")}</small><p>${esc(m.message)}</p></div></article>`;
+ }).join(""):"<div class='empty'>No memories yet. Be the first to share one! ✨</div>";
+ memoryList.querySelectorAll(".like-btn").forEach(b=>b.onclick=async()=>{const id=b.dataset.like;try{const current=Number(b.querySelector("span").textContent||0);const {error}=await supabase.from("memories").update({likes:current+1}).eq("id",id);if(error)throw error;b.querySelector("span").textContent=current+1}catch(e){console.error(e);alert("Like save nahi hua. Supabase policy check karo.")}});
+}
+
+async function loadMemories(){
+ if(!ready){
+   memoryList.innerHTML='<div class="empty">Supabase connection ready nahi hai.</div>';
+   return;
+ }
+ memoryList.innerHTML='<div class="empty">⏳ Memories load ho rahi hain…</div>';
+ try{
+   const {data,error}=await supabase
+     .from("memories")
+     .select("id,name,department,message,photo_url,storage_path,likes")
+     .order("id",{ascending:false});
+   if(error) throw error;
+   console.log("MEMORIES LOADED:",data);
+   render(data||[]);
+   if(uploadStatus) uploadStatus.textContent=(data?.length||0)+" shared memory loaded ✓";
+ }catch(e){
+   console.error("MEMORIES READ ERROR",e);
+   memoryList.innerHTML='<div class="empty">⚠️ Memories load nahi hui.<br><small>'+esc(e?.message||String(e))+'</small><br><button class="btn" id="retryMemories" style="margin-top:14px">↻ Retry</button></div>';
+   const retry=document.getElementById("retryMemories");
+   if(retry) retry.onclick=loadMemories;
+ }
+}
+
+loadMemories();
+setTimeout(loadMemories,1500);
+
+// Live shared gallery: new memories/updates appear for everyone without refresh.
+const memoriesChannel = supabase
+  .channel("public-memories-live")
+  .on("postgres_changes", { event: "*", schema: "public", table: "memories" }, () => {
+    loadMemories();
+  })
+  .subscribe((status) => {
+    console.log("Memories realtime:", status);
+  });
+
+publishMemory.onclick=async()=>{
+ const n=memoryName.value.trim(),dep=memoryDepartment.value.trim(),msg=memoryMessage.value.trim(),f=file.files[0];
+ if(!n||!msg||!f)return alert("Name, photo aur memory teeno bharna zaroori hai.");
+ if(!ready)return alert("Supabase connection key missing.");
+ if(!(f instanceof File))return alert("Photo browser File ke roop mein nahi mili. Chrome mein HTTPS website kholo.");
+ try{
+  uploadStatus.textContent="1/2 • Photo browser se read ho rahi hai…";
+  if(typeof f.arrayBuffer!=="function") throw new Error("Browser File API available nahi hai. Chrome/HTTPS mein website kholo.");
+  const fileBuffer=await f.arrayBuffer();
+  if(!fileBuffer.byteLength) throw new Error("Photo empty hai ya browser ne file read nahi ki.");
+
+  uploadStatus.textContent="1/2 • Photo Supabase Storage mein upload ho rahi hai…";
+  const safeName=(f.name||"photo.jpg").replace(/[^a-zA-Z0-9._-]/g,"_");
+  const path=`${Date.now()}_${safeName}`;
+  const contentType=f.type||"image/jpeg";
+  const {error:uploadError}=await supabase.storage.from("memory-photos").upload(path,fileBuffer,{contentType,upsert:false});
+  if(uploadError){
+   console.error("STORAGE ERROR",uploadError);
+   uploadStatus.textContent="STORAGE ERROR: "+(uploadError.message||"Unknown error");
+   alert("STORAGE ERROR\n"+(uploadError.message||"Unknown error")+"\n\nAgar 'Failed to fetch' aaye, website ko HTTPS Vercel URL se kholo.");
+   return;
+  }
+
+  uploadStatus.textContent="2/2 • Memory database mein save ho rahi hai…";
+  const {data:publicData}=supabase.storage.from("memory-photos").getPublicUrl(path);
+  const {error:dbError}=await supabase.from("memories").insert({
+    name:n,department:dep,message:msg,photo_url:publicData.publicUrl,storage_path:path,likes:0
+  });
+  if(dbError){
+   console.error("DATABASE ERROR",dbError);
+   uploadStatus.textContent="DATABASE ERROR: "+(dbError.message||"Unknown error");
+   alert("DATABASE ERROR\n"+(dbError.message||"Unknown error"));
+   return;
+  }
+
+  uploadStatus.textContent="Memory published successfully ✓";
+  reset();form.classList.remove("open");await loadMemories();
+  document.getElementById("memories").scrollIntoView({behavior:"smooth"});
+ }catch(e){
+  console.error("UPLOAD ERROR",e);
+  const detail=[e?.name,e?.message,e?.details,e?.hint,e?.code].filter(Boolean).join(" | ");
+  uploadStatus.textContent="UPLOAD ERROR: "+detail;
+  alert("UPLOAD ERROR\n"+detail);
+ }
+};
+
+const wishParts={
+ intro:["Your journey is full of ideas waiting to become reality.","Your imagination has the power to turn challenges into opportunities.","Every great achievement begins with one curious mind and one brave step.","The world needs people who can think differently, build patiently and dream boldly.","May your college memories become the foundation of an inspiring future.","Your skills, ideas and determination can create something that truly matters.","Engineering is not only about solving problems; it is about creating possibilities.","May every lesson you learn today become a strength you carry into tomorrow."],
+ middle:["Keep exploring, keep learning and never be afraid to build something new.","May every difficult problem make you stronger and every success make you more confident.","Believe in your ideas, respect the process and give your best to every creation.","May your creativity stay fearless, your curiosity stay alive and your dreams stay bigger than your doubts.","Turn your knowledge into action, your mistakes into lessons and your dreams into achievements.","May you find great teammates, meaningful projects and countless reasons to be proud of your journey."],
+ close:["Keep creating. Keep growing. Keep making memories. ✨","Dream big, build boldly and leave your own mark. 🚀","Your best chapter is still waiting to be written. 💫","Stay curious, stay humble and keep engineering a better tomorrow. ❤️","May your future be as bright as the ideas you carry today. 🌟","Keep creating, keep growing and keep making memories. 🛠️"]
+};
+function nameHash(name){let h=0;for(let i=0;i<name.length;i++)h=(h*31+name.charCodeAt(i))>>>0;return h}
+openWish.onclick=()=>{const n=wishName.value.trim()||"Engineer";const h=nameHash(n.toLowerCase());const intro=wishParts.intro[h%wishParts.intro.length];const middle=wishParts.middle[Math.floor(h/7)%wishParts.middle.length];const close=wishParts.close[Math.floor(h/53)%wishParts.close.length];letterTitle.textContent=`A Special Wish for ${n} 💌`;letter.innerHTML=`<h2 class="gold">A Special Wish for ${n} 💌</h2><p>${intro}</p><p>${middle}</p><p>${close}</p>`;letter.classList.add("show")};
+
+const eventHero=document.querySelector(".hero");
+function updateEventMode(){const end=new Date("September 15, 2026 23:59:59").getTime();if(Date.now()>end)eventHero?.classList.add("hide-event")}
+updateEventMode();setInterval(updateEventMode,1000);
+
+// Food menus
+const menus={
+ restaurant:'<h3>🍴 Restaurant Menu</h3><p>Paneer Tikka ₹160<br>Veg Biryani ₹140<br>Masala Dosa ₹90<br>Cold Coffee ₹70</p>',
+ hotel:'<h3>🏨 Hotel Menu</h3><p>Breakfast ₹120<br>Thali ₹220<br>Veg Biryani ₹180<br>Tea/Coffee ₹50</p>',
+ canteen:'<h3>☕ Canteen Menu</h3><p>Samosa ₹15<br>Maggi ₹40<br>Sandwich ₹50<br>Chai ₹15</p>'
+};
+document.querySelectorAll('.food-menu').forEach(b=>b.onclick=()=>{const p=document.getElementById('menuPanel');p.innerHTML=menus[b.dataset.menu];p.style.display='block';});
+function safeOpen(raw){try{const u=new URL(raw,location.href);if(!['http:','https:'].includes(u.protocol))throw 0;location.href=u.href}catch(e){alert('Valid http/https menu link enter karein.')}}
+const openMenu=document.getElementById('openMenu');if(openMenu)openMenu.onclick=()=>safeOpen(document.getElementById('menuUrl').value.trim());
+
+// Real camera QR scanner
+let qrScanner=null;
+function stopQR(){if(qrScanner){qrScanner.stop().catch(()=>{});qrScanner.clear().catch(()=>{});qrScanner=null;}const box=document.getElementById('qrReader');if(box)box.style.display='none';} window.stopQR=stopQR;
+const startQr=document.getElementById('startQr');
+if(startQr)startQr.onclick=async()=>{
+ const box=document.getElementById('qrReader'); box.style.display='block';
+ if(!window.Html5Qrcode)return alert('QR scanner library load nahi hui. Internet on karke retry karein.');
+ try{
+  stopQR(); box.style.display='block'; qrScanner=new Html5Qrcode('qrReader');
+  await qrScanner.start({facingMode:'environment'},{fps:10,qrbox:{width:240,height:240}},async text=>{
+   await qrScanner.stop().catch(()=>{});qrScanner.clear().catch(()=>{});qrScanner=null;safeOpen(text);
+  },()=>{});
+ }catch(e){stopQR();alert('Camera start nahi hua. Browser mein camera permission Allow karein aur HTTPS Vercel website use karein.');}
+};
+
+
+// Lightweight 3D campus tilt — disabled for touch devices
+(function(){
+  var card=document.querySelector('.campus-3d');
+  if(!card || window.matchMedia('(pointer:coarse)').matches) return;
+  var wrap=card.parentElement;
+  wrap.addEventListener('mousemove',function(e){
+    var r=wrap.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform='rotateX('+(-y*7)+'deg) rotateY('+(x*7)+'deg) translateY(-4px)';
+  });
+  wrap.addEventListener('mouseleave',function(){card.style.transform='';});
+})();
+
+// Quiz
+const quiz=[['CSE ka full form?',['Computer Science & Engineering','Civil Software Engineering','Computer System Education'],0],['HTML kisliye use hota hai?',['Web page structure','Database only','Photo editing'],0],['JavaScript kya karta hai?',['Web interactivity','Only printing','Only hardware repair'],0]];
+let qi=0,qscore=0;function renderQuiz(){const q=quiz[qi];document.getElementById('quizQ').textContent=q[0];const bs=document.querySelectorAll('.quiz-opt');bs[0].textContent='A. '+q[1][0];bs[1].textContent='B. '+q[1][1];bs[2].textContent='C. '+q[1][2];bs.forEach(b=>b.style.display='inline-block');}
+document.querySelectorAll('.quiz-opt').forEach((b,i)=>b.onclick=()=>{if(i===quiz[qi][2])qscore++;qi++;if(qi<quiz.length)renderQuiz();else{document.getElementById('quizQ').textContent='Quiz complete 🎉';document.getElementById('quizResult').textContent='Score: '+qscore+'/'+quiz.length;qi=0;qscore=0;setTimeout(renderQuiz,1200);}});renderQuiz();
+
+// RPS
+let ys=0,cs=0;document.querySelectorAll('.rps').forEach(b=>b.onclick=()=>{const c=['Rock','Paper','Scissors'][Math.floor(Math.random()*3)],u=b.dataset.v;let r=u===c?'Draw':((u==='Rock'&&c==='Scissors')||(u==='Paper'&&c==='Rock')||(u==='Scissors'&&c==='Paper'))?'You win!':'Computer wins!';if(r==='You win!')ys++;if(r==='Computer wins!')cs++;document.getElementById('rpsResult').textContent='You: '+u+' • Computer: '+c+' → '+r;document.getElementById('rpsScore').textContent='You '+ys+' — '+cs+' Computer';});
+
+// Lucky number
+let luckySecret=Math.floor(Math.random()*100)+1;document.getElementById('luckyBtn').onclick=()=>{const g=Number(document.getElementById('luckyGuess').value),r=document.getElementById('luckyResult');if(!g||g<1||g>100)return r.textContent='1 se 100 tak number do.';r.textContent=g===luckySecret?'🎉 Correct! New number generated.':g<luckySecret?'⬆️ Thoda bada number try karo.':'⬇️ Thoda chhota number try karo.';if(g===luckySecret)luckySecret=Math.floor(Math.random()*100)+1;};
+
+// Profile
+const saveProfile=document.getElementById('saveProfile');if(saveProfile)saveProfile.onclick=()=>{const n=document.getElementById('profileName').value.trim(),d=document.getElementById('profileDept').value.trim(),a=document.getElementById('anonymousMode').checked;if(!n)return alert('Name enter karein.');localStorage.setItem('ts_profile',JSON.stringify({n,d,a}));document.getElementById('profileCard').innerHTML='<b>'+esc(n)+'</b><br>'+esc(d||'Student')+'<br><small>Chat mode: '+(a?'Anonymous 🕶️':'Name visible')+'</small>';document.getElementById('avatarCircle').textContent=n[0].toUpperCase();};
+try{const pr=JSON.parse(localStorage.getItem('ts_profile')||'null');if(pr){document.getElementById('profileName').value=pr.n||'';document.getElementById('profileDept').value=pr.d||'';document.getElementById('anonymousMode').checked=pr.a!==false;document.getElementById('profileCard').innerHTML='<b>'+esc(pr.n)+'</b><br>'+esc(pr.d||'Student')+'<br><small>Chat mode: '+(pr.a!==false?'Anonymous 🕶️':'Name visible')+'</small>';document.getElementById('avatarCircle').textContent=(pr.n||'🎓')[0].toUpperCase();}}catch(e){}
+
+// Anonymous online chat (requires Supabase table campus_chat; SQL provided in UI if missing)
+let chatTimer=null;async function loadChat(){const box=document.getElementById('chatMessages');try{const {data,error}=await supabase.from('campus_chat').select('id,topic,message,display_name,created_at').eq('topic',document.getElementById('chatTopic').value).order('id',{ascending:true}).limit(100);if(error)throw error;box.innerHTML=(data||[]).map(m=>'<div style="padding:8px 10px;margin:6px 0;background:#f3f4f6;border-radius:10px"><b>'+esc(m.display_name||'Anonymous')+'</b><br>'+esc(m.message)+'</div>').join('')||'<p>No messages yet. Start the conversation.</p>';box.scrollTop=box.scrollHeight;document.getElementById('chatStatus').textContent='🟢 Online room';}catch(e){document.getElementById('chatStatus').innerHTML='⚠️ Chat database setup pending. Create <b>campus_chat</b> table in Supabase.';}}
+document.getElementById('sendChat').onclick=async()=>{const inp=document.getElementById('chatInput'),msg=inp.value.trim();if(!msg)return;const pr=JSON.parse(localStorage.getItem('ts_profile')||'{}');const display=pr.a===false?(pr.n||'Student'):'Anonymous-'+Math.floor(1000+Math.random()*9000);try{const {error}=await supabase.from('campus_chat').insert({topic:document.getElementById('chatTopic').value,message:msg,display_name:display});if(error)throw error;inp.value='';loadChat();}catch(e){alert('Chat save nahi hua. Supabase mein campus_chat table + policies create karni hongi.');}};document.getElementById('chatTopic').onchange=loadChat;loadChat();
+try{supabase.channel('campus-chat-live').on('postgres_changes',{event:'*',schema:'public',table:'campus_chat'},loadChat).subscribe();}catch(e){}
+
+// Premium section
+document.getElementById('premiumBtn').onclick=()=>alert('Campus Plus ₹29 selected. Payment gateway (UPI/Razorpay etc.) connect karke real payment activate ki ja sakti hai.');
+</script>
+<script>
+/* CAMPUS + PROFILE LOCAL FUNCTIONS */
+(function(){
+  const directory=[['🏫','SR Institute of Management & Technology','Engineering, Technology & Management'],['💼','SRM Business School','Business & Management'],['🩺','SRM Ayush Institute of Medical Sciences','Medical Sciences'],['🌐','SR Global School','School campus'],['🏅','SR International School & Sports Academy','School & Sports'],['📚','Library','Study & resources'],['🍽️','Cafeteria / Canteen','Food & student area'],['🛏️','Hostel Area','Student residence'],['⚽','Sports Area','Sports & activities'],['🏢','Administrative / Main Office','Admissions & administration']];
+  function esc2(v){const d=document.createElement('div');d.textContent=v??'';return d.innerHTML;}
+  function renderProfile(pr){const card=document.getElementById('profileCard'),av=document.getElementById('avatarCircle'),n=document.getElementById('profileName'),d=document.getElementById('profileDept'),a=document.getElementById('anonymousMode');if(n)n.value=pr.n||'';if(d)d.value=pr.d||'';if(a)a.checked=pr.a!==false;if(card)card.innerHTML='<b>'+esc2(pr.n||'Student')+'</b><br>'+esc2(pr.d||'Student')+'<br><small>Chat mode: '+(pr.a!==false?'Anonymous 🕶️':'Name visible')+'</small>';if(av)av.textContent=(pr.n||'🎓').charAt(0).toUpperCase();}
+  function init(){
+    const el=document.getElementById('campusDirectoryList');if(el)el.innerHTML=directory.map(x=>`<div class="camp-card"><div class="mag-icon">${x[0]}</div><h3>${x[1]}</h3><div class="notice">${x[2]}</div></div>`).join('');
+    const d=document.getElementById('myDept'),c=document.getElementById('myClassroom'),out=document.getElementById('classroomSaved');
+    try{const x=JSON.parse(localStorage.getItem('ts_classroom')||'null');if(x){if(d)d.value=x.d||'';if(c)c.value=x.c||'';if(out)out.innerHTML='<b>Saved:</b> '+esc2(x.d)+' • '+esc2(x.c);}}catch(e){}
+    const save=document.getElementById('saveClassroom');if(save)save.onclick=function(){const dd=d?.value.trim()||'',cc=c?.value.trim()||'';if(!dd||!cc){alert('Department aur classroom dono enter karein.');return;}localStorage.setItem('ts_classroom',JSON.stringify({d:dd,c:cc}));if(out)out.innerHTML='<b>✓ Saved:</b> '+esc2(dd)+' • '+esc2(cc);};
+    const map=document.getElementById('openCampusMap');if(map)map.onclick=function(){window.open('https://www.google.com/maps/search/?api=1&query=SR+Group+of+Institutions+NH-24+Sitapur+Road+BKT+Lucknow','_blank');};
+    const dir=document.getElementById('getDirections');if(dir)dir.onclick=function(){window.open('https://www.google.com/maps/dir/?api=1&destination=SR+Group+of+Institutions+NH-24+Sitapur+Road+BKT+Lucknow','_blank');};
+    const saveProfile=document.getElementById('saveProfile');if(saveProfile)saveProfile.onclick=function(){const n=document.getElementById('profileName')?.value.trim()||'',d2=document.getElementById('profileDept')?.value.trim()||'',a=document.getElementById('anonymousMode')?.checked!==false;if(!n){alert('Name enter karein.');return;}const pr={n:n,d:d2,a:a};localStorage.setItem('ts_profile',JSON.stringify(pr));renderProfile(pr);};
+    try{const pr=JSON.parse(localStorage.getItem('ts_profile')||'null');if(pr)renderProfile(pr);}catch(e){}
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+<script>(function(){const magazine=[['📜','Our Story & Inspiration','The magazine says SR Group was founded in 2009 with S R Institute of Management and Technology, inspired by Late Shri Subedar Singh and Late Smt. Raj Devi.','history story 2009'],['🎓','Academic Programs','The magazine lists B.Tech, M.Tech, B.Voc, MBA, iMBA, D.Pharma (Ayurvedic) and Nursing (Ayurvedic), with multiple branches.','courses academics'],['💻','CSE Department','CSE focuses on programming, networking, and management of hardware and software information systems.','cse programming networking'],['🤖','AI • AI&ML • Data Science','The magazine describes 4-year B.Tech pathways and applications in healthcare, finance, retail and entertainment.','ai machine learning data science'],['🌐','Information Technology','IT is presented as a 4-year B.Tech program with modern digital technology and career scope.','it information technology cloud'],['🏫','Campus & Infrastructure','The magazine highlights AC classrooms, equipped labs, hostels and mess, online lectures, library, hi-tech computer lab, Wi-Fi and buses.','campus infrastructure labs wifi'],['📚','Library','The magazine describes digital resources and 60,000+ books/e-books across engineering, pharmacy, management, agriculture and biotechnology.','library books ebooks'],['🛏️','Hostel & Student Life','Furnished hostels, surveillance, Wi-Fi, cafeteria, separate accommodation, gyms and jogging track are highlighted.','hostel student life'],['⚽','Sports & Health','The magazine mentions a dedicated sports stadium, intra/inter-college sports and 24x7 medicare support.','sports health stadium'],['🖥️','ERP & Student Support','ERP supports online classes, study material, attendance, assignments, notices and updates.','erp attendance assignment'],['🏆','Achievements & Placements','The magazine includes AKTU academic medals, top placements, student case studies and SRGI in the headlines.','placements medals achievements'],['🎤','Events & Student Activities','Srijan, Sports Fest - Shaurya, Technovation & Prabandhan, Bhajan Jamming & Creators Connect and eminent speakers are featured.','events srijan shaurya technovation'],['🌱','Vision & Values','The magazine emphasizes quality education, professional behaviour, teamwork, ethical conduct, innovation and holistic learning.','vision values ethics']];function renderMag(q=''){const e=document.getElementById('magGrid');if(!e)return;const a=magazine.filter(m=>(m[1]+' '+m[2]+' '+m[3]).toLowerCase().includes(q.toLowerCase()));e.innerHTML=a.map(m=>`<article class="mag-card"><div class="mag-icon">${m[0]}</div><h3>${m[1]}</h3><p style="color:#ccc;line-height:1.75">${m[2]}</p></article>`).join('')||'<div class="empty">No matching topic.</div>'}document.addEventListener('DOMContentLoaded',()=>{renderMag();document.getElementById('magSearch')?.addEventListener('input',e=>renderMag(e.target.value));const dir=[['🏫','SR Institute of Management & Technology','Engineering, Technology & Management'],['💼','SRM Business School','Business & Management'],['🩺','SRM Ayush Institute of Medical Sciences','Medical Sciences'],['🌐','SR Global School','School campus'],['🏅','SR International School & Sports Academy','School & Sports'],['📚','Library','Study & resources'],['🍽️','Cafeteria / Canteen','Food & student area'],['🛏️','Hostel Area','Student residence'],['⚽','Sports Area','Sports & activities'],['🏢','Administrative / Main Office','Admissions & administration']];const dl=document.getElementById('campusDirectoryList');if(dl)dl.innerHTML=dir.map(x=>`<div class="camp-card"><div class="mag-icon">${x[0]}</div><h3>${x[1]}</h3><div class="notice">${x[2]}</div></div>`).join('');try{const x=JSON.parse(localStorage.getItem('ts_classroom')||'null');if(x){myDept.value=x.d||'';myClassroom.value=x.c||'';classroomSaved.innerHTML='<b>Saved:</b> '+esc(x.d)+' • '+esc(x.c)}}catch(e){}document.getElementById('saveClassroom')?.addEventListener('click',()=>{const d=myDept.value.trim(),c=myClassroom.value.trim();if(!d||!c)return alert('Department aur classroom dono enter karein.');localStorage.setItem('ts_classroom',JSON.stringify({d,c}));classroomSaved.innerHTML='<b>✓ Saved:</b> '+esc(d)+' • '+esc(c)});document.getElementById('openCampusMap')?.addEventListener('click',()=>open('https://www.google.com/maps/search/?api=1&query=SR+Group+of+Institutions+NH-24+Sitapur+Road+BKT+Lucknow','_blank'));document.getElementById('getDirections')?.addEventListener('click',()=>open('https://www.google.com/maps/dir/?api=1&destination=SR+Group+of+Institutions+NH-24+Sitapur+Road+BKT+Lucknow','_blank'));});let rv=0;const ov=document.getElementById('ratingOverlay');document.querySelectorAll('.star').forEach(b=>b.onclick=()=>{rv=+b.dataset.r;document.querySelectorAll('.star').forEach(x=>x.classList.toggle('on',+x.dataset.r<=rv))});document.getElementById('closeRating')?.addEventListener('click',()=>ov.classList.remove('show'));document.getElementById('submitRating')?.addEventListener('click',async()=>{if(!rv)return ratingStatus.textContent='Please select 1–5 stars.';const comment=ratingComment.value.trim();try{const {error}=await supabase.from('app_ratings').insert({rating:rv,comment:comment||null});if(error)throw error;ratingStatus.textContent='✓ Rating submitted. Thank you!';}catch(e){localStorage.setItem('ts_rating',JSON.stringify({rating:rv,comment,date:Date.now()}));ratingStatus.textContent='✓ Feedback saved on this device.'}setTimeout(()=>ov.classList.remove('show'),900)});window.openCollegeRating=()=>ov.classList.add('show');})();</script><script>
+/* OFFLINE-SAFE INTERACTION LAYER */
+(function(){
+  function init(){
+    const menus={restaurant:'<h3>🍴 Restaurant Menu</h3><p>Paneer Tikka ₹160<br>Veg Biryani ₹140<br>Masala Dosa ₹90<br>Cold Coffee ₹70</p>',hotel:'<h3>🏨 Hotel Menu</h3><p>Breakfast ₹120<br>Thali ₹220<br>Veg Biryani ₹180<br>Tea/Coffee ₹50</p>',canteen:'<h3>☕ Canteen Menu</h3><p>Samosa ₹15<br>Maggi ₹40<br>Sandwich ₹50<br>Chai ₹15</p>'};
+    const panel=document.getElementById('menuPanel');document.querySelectorAll('.food-menu').forEach(b=>b.onclick=function(){if(panel){panel.innerHTML=menus[b.dataset.menu]||'<p>Menu unavailable.</p>';panel.style.display='block';}});
+    const prem=document.getElementById('premiumBtn');if(prem)prem.onclick=function(){prem.textContent='✓ Campus Plus Selected';prem.disabled=true;alert('Campus Plus selected. Payment gateway connected nahi hai, isliye payment nahi li gayi.');};
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+
+<script>
+/* FINAL SAFETY: every primary control gets a visible response */
+(function(){
+  function boot(){
+    const $=id=>document.getElementById(id);
+    // Profile persistence
+    const saveProfile=$('saveProfile');
+    if(saveProfile && !saveProfile.dataset.boundFinal){
+      saveProfile.dataset.boundFinal='1';
+      saveProfile.addEventListener('click',()=>{
+        const n=$('profileName')?.value.trim()||'', d=$('profileDept')?.value.trim()||'';
+        const a=$('anonymousMode')?.checked!==false;
+        if(!n){alert('Name enter karein.');return;}
+        localStorage.setItem('ts_profile',JSON.stringify({n,d,a}));
+        if($('avatarCircle')) $('avatarCircle').textContent=n.charAt(0).toUpperCase();
+        if($('profileCard')) $('profileCard').innerHTML='<b>'+n.replace(/[<>]/g,'')+'</b><br>'+(d||'Student')+'<br><small>Chat mode: '+(a?'Anonymous 🕶️':'Name visible')+'</small>';
+        saveProfile.textContent='✓ Profile Saved'; setTimeout(()=>saveProfile.textContent='Save Profile',1200);
+      });
+    }
+    // Classroom persistence
+    const saveClass=$('saveClassroom');
+    if(saveClass && !saveClass.dataset.boundFinal){
+      saveClass.dataset.boundFinal='1'; saveClass.addEventListener('click',()=>{
+        const d=$('myDept')?.value.trim()||'', c=$('myClassroom')?.value.trim()||'';
+        if(!d||!c){alert('Department aur classroom dono enter karein.');return;}
+        localStorage.setItem('ts_classroom',JSON.stringify({d,c}));
+        if($('classroomSaved')) $('classroomSaved').innerHTML='<b>✓ Saved:</b> '+d.replace(/[<>]/g,'')+' • '+c.replace(/[<>]/g,'');
+      });
+    }
+    // Local fallback chat: works even before the Supabase chat table is created.
+    const send=$('sendChat');
+    if(send && !send.dataset.boundFinal){
+      send.dataset.boundFinal='1'; send.addEventListener('click',()=>{
+        const input=$('chatInput'), topic=$('chatTopic')?.value||'General', msg=input?.value.trim()||'';
+        if(!msg)return;
+        const pr=JSON.parse(localStorage.getItem('ts_profile')||'{}');
+        const name=pr.a===false?(pr.n||'Student'):'Anonymous';
+        const key='ts_chat_'+topic; const arr=JSON.parse(localStorage.getItem(key)||'[]');
+        arr.push({name,msg,time:Date.now()}); localStorage.setItem(key,JSON.stringify(arr.slice(-100)));
+        input.value=''; renderLocalChat();
+        if($('chatStatus')) $('chatStatus').textContent='🟢 Local chat active';
+      });
+    }
+    function renderLocalChat(){
+      const box=$('chatMessages'),topic=$('chatTopic')?.value||'General'; if(!box)return;
+      const arr=JSON.parse(localStorage.getItem('ts_chat_'+topic)||'[]');
+      box.innerHTML=arr.length?arr.map(x=>'<div style="padding:8px 10px;margin:6px 0;background:#f3f4f6;border-radius:10px"><b>'+String(x.name).replace(/[<>]/g,'')+'</b><br>'+String(x.msg).replace(/[<>]/g,'')+'</div>').join(''):'<p>No messages yet. Start the conversation.</p>';
+      box.scrollTop=box.scrollHeight;
+    }
+    $('chatTopic')?.addEventListener('change',renderLocalChat); renderLocalChat();
+    // Make menu actions visibly functional without relying on external libraries.
+    const panel=$('menuPanel');
+    document.querySelectorAll('.food-menu').forEach(b=>{if(!b.dataset.boundFinal)b.dataset.boundFinal='1';});
+    // Premium is intentionally a selection only; never pretend payment happened.
+    const prem=$('premiumBtn'); if(prem && !prem.dataset.boundFinal){prem.dataset.boundFinal='1';}
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot); else boot();
+})();
+</script>
+
+<script>
+/* FINAL ENGINEER'S DAY NAVIGATION + RATING PATCH */
+(function(){
+  function showPage(id){
+    var home=document.getElementById('home');
+    var pages=document.querySelectorAll('.nav-page');
+    if(id==='memories'){
+      if(home) home.style.display='block';
+      pages.forEach(function(p){p.classList.remove('show');});
+      var m=document.getElementById('memories');
+      if(m){setTimeout(function(){m.scrollIntoView({behavior:'smooth',block:'start'});},40);}
+    } else if(id==='home'){
+      if(home) home.style.display='block';
+      pages.forEach(function(p){p.classList.remove('show');});
+      window.scrollTo({top:0,behavior:'smooth'});
+    } else {
+      if(home) home.style.display='none';
+      pages.forEach(function(p){p.classList.toggle('show',p.id===id);});
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    document.querySelectorAll('.nav-item').forEach(function(a){
+      a.classList.toggle('active',(a.getAttribute('href')||'')==='#'+id);
+    });
+    return false;
+  }
+  window.showCollegeTab=showPage; window.goToTab=showPage; window.openCollegePage=showPage;
+  document.addEventListener('click',function(e){
+    var a=e.target.closest && e.target.closest('.nav-item');
+    if(a){e.preventDefault();e.stopImmediatePropagation();showPage((a.getAttribute('href')||'#home').substring(1));}
+  },true);
+
+  function setupRating(){
+    var selected=0;
+    var stars=document.querySelectorAll('.final-star');
+    stars.forEach(function(star){
+      star.addEventListener('click',function(){
+        selected=Number(star.dataset.rating);
+        stars.forEach(function(x){x.classList.toggle('on',Number(x.dataset.rating)<=selected);});
+      });
+    });
+    var btn=document.getElementById('finalSubmitRating');
+    if(btn) btn.addEventListener('click',async function(){
+      var status=document.getElementById('finalRatingStatus');
+      var comment=(document.getElementById('finalRatingComment')||{}).value||'';
+      if(!selected){if(status) status.textContent='Please select 1–5 stars first.';return;}
+      btn.disabled=true;
+      try{
+        if(window.supabase){
+          var r=await window.supabase.from('app_ratings').insert({rating:selected,comment:comment.trim()||null});
+          if(r.error) throw r.error;
+        }
+        localStorage.setItem('collegeMemoriesRating',JSON.stringify({rating:selected,comment:comment.trim(),time:Date.now()}));
+        if(status) status.textContent='✓ Thank you! Your rating and feedback have been confirmed.';
+      }catch(err){
+        localStorage.setItem('collegeMemoriesRating',JSON.stringify({rating:selected,comment:comment.trim(),time:Date.now()}));
+        if(status) status.textContent='✓ Rating confirmed on this device. Online sync will work when the rating table is enabled.';
+      }finally{btn.disabled=false;}
+    });
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    setupRating();
+    showPage((location.hash||'#home').substring(1));
+  });
+})();
+</script>
+<script>
+(function(){
+  const allowed=['home','memories','studentLogin','profile','ratingPage'];
+  function nav(id){
+    if(!allowed.includes(id)) id='home';
+    document.querySelectorAll('.final-nav a').forEach(a=>a.classList.toggle('active',a.dataset.finalNav===id));
+    const home=document.getElementById('home');
+    document.querySelectorAll('.nav-page').forEach(p=>p.classList.remove('show'));
+    if(home) home.style.display=(id==='home'||id==='memories')?'block':'none';
+    if(id==='memories'){
+      const m=document.getElementById('memories'); if(m)setTimeout(()=>m.scrollIntoView({behavior:'smooth',block:'start'}),40);
+    } else if(id==='home'){window.scrollTo({top:0,behavior:'smooth'});
+    } else {const page=document.getElementById(id);if(page)page.classList.add('show');window.scrollTo({top:0,behavior:'smooth'});}
+    history.replaceState(null,'','#'+id);
+  }
+  window.showCollegeTab=nav;window.goToTab=nav;window.openCollegePage=nav;
+  document.addEventListener('click',function(e){const a=e.target.closest&&e.target.closest('[data-final-nav]');if(a){e.preventDefault();nav(a.dataset.finalNav);}},true);
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('.final-nav a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()));
+    const hash=(location.hash||'#home').slice(1); nav(hash);
+  });
+})();
+</script>
+<script>
+(function(){
+  function go(id){var el=document.getElementById(id); if(!el) return; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  var plane=document.getElementById('paperMemoryBtn');
+  if(plane) plane.addEventListener('click',function(){
+    var m=document.getElementById('memories');
+    if(m){m.scrollIntoView({behavior:'smooth',block:'start'});}
+    var w=document.getElementById('welcome'); if(w){w.classList.add('welcome-hide');}
+  });
+  document.querySelectorAll('.quick-card').forEach(function(c){c.addEventListener('click',function(){go(c.getAttribute('data-go'));});});
+  var enter=document.getElementById('enterBtn');
+  if(enter) enter.addEventListener('click',function(){var m=document.getElementById('memories');if(m)m.scrollIntoView({behavior:'smooth',block:'start'});var w=document.getElementById('welcome');if(w)w.classList.add('welcome-hide');});
+})();
+</script><section class="thanks"><h2>Thank You for Visiting</h2><p>Thank you for visiting SRGI College Memories • Keep creating, keep learning, keep inspiring. ✨</p><div class="gold" style="margin-top:18px">Development by Devesh</div></section><script>
+/* ROBUST FINAL NAV + CAMERA + HOME REGISTRATION + RATING */
+(function(){
+  function $(id){return document.getElementById(id)}
+  function renderRegisteredStudents(){
+    var box=$('registeredStudentsList'); if(!box) return;
+    var arr=[]; try{arr=JSON.parse(localStorage.getItem('collegeStudentRegistrations')||'[]')}catch(e){}
+    if(!arr.length){box.innerHTML='<div class="registered-item">No student registration found yet.<br><small>Home → Student Registration se details save karein.</small></div>';return;}
+    box.innerHTML=arr.slice().reverse().map(function(x){
+      return '<div class="registered-item"><b>'+esc(String(x.name||'Student'))+'</b><small>Roll: '+esc(String(x.roll||'-'))+' • '+esc(String(x.branch||'Department not set'))+' • '+esc(String(x.year||'Year not set'))+'</small></div>';
+    }).join('');
+  }
+  function show(id){
+    var profile=$('profile');
+    var isProfile=id==='profile';
+    document.body.classList.toggle('profile-mode',isProfile);
+    document.querySelectorAll('.nav-page').forEach(function(p){p.classList.remove('show')});
+    if(isProfile && profile) profile.classList.add('show');
+    $('profileNav')?.classList.toggle('active',isProfile); $('homeNav')?.classList.toggle('active',!isProfile);
+    if(isProfile) renderRegisteredStudents();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function openMemoryFromCamera(file){
+    if(!file)return;
+    var target=$('memoryPhoto');
+    try{ if(target && window.DataTransfer){var dt=new DataTransfer();dt.items.add(file);target.files=dt.files;target.dispatchEvent(new Event('change',{bubbles:true}));} }catch(e){}
+    var m=$('memories'); if(m)m.scrollIntoView({behavior:'smooth',block:'start'});
+    var w=$('welcome'); if(w)w.classList.add('welcome-hide');
+  }
+  document.addEventListener('click',function(e){
+    var h=e.target.closest&&e.target.closest('#homeNav');
+    var p=e.target.closest&&e.target.closest('#profileNav');
+    if(h){e.preventDefault();show('home')}
+    if(p){e.preventDefault();show('profile')}
+  },true);
+  $('navCameraInput')?.addEventListener('change',function(){openMemoryFromCamera(this.files&&this.files[0])});
+  // Registration
+  $('homeStudentRegister')?.addEventListener('click',function(){
+    var data={name:$('homeStudentName')?.value.trim(),roll:$('homeStudentRoll')?.value.trim(),branch:$('homeStudentBranch')?.value.trim(),year:$('homeStudentYear')?.value.trim(),time:Date.now()};
+    var st=$('homeStudentStatus'); if(!data.name||!data.roll){if(st)st.textContent='Please enter Name and Roll Number.';return}
+    var arr=JSON.parse(localStorage.getItem('collegeStudentRegistrations')||'[]');arr.push(data);localStorage.setItem('collegeStudentRegistrations',JSON.stringify(arr));if(st)st.textContent='✓ Student registered successfully on this device.';renderRegisteredStudents();
+  });
+  // Home rating
+  var selected=0;document.querySelectorAll('.home-star').forEach(function(x){x.addEventListener('click',function(){selected=+x.dataset.rating;document.querySelectorAll('.home-star').forEach(function(y){y.classList.toggle('on',+y.dataset.rating<=selected)})})});
+  $('homeRatingSubmit')?.addEventListener('click',async function(){var st=$('homeRatingStatus'),comment=$('homeRatingComment')?.value.trim()||'';if(!selected){if(st)st.textContent='Please select stars first.';return}var saved={rating:selected,comment:comment,time:Date.now()};localStorage.setItem('collegeMemoriesRating',JSON.stringify(saved));try{if(window.supabase){var r=await window.supabase.from('app_ratings').insert({rating:selected,comment:comment||null});if(r.error)throw r.error}}catch(e){}if(st)st.textContent='✓ Thank you! Rating submitted.'});
+  function init(){show((location.hash||'#home').slice(1)==='profile'?'profile':'home')}
+  window.addEventListener('hashchange',init); if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script></body></html>
